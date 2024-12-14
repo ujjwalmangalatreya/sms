@@ -6,14 +6,14 @@ import 'package:schoolmgmt/screens/signup/signup_form.dart';
 
 
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayout(
         webChild: WebLayout(
           imageWidget: Image.asset(
-            "assets/images/signup.png",
+            "assets/images/school_building.jpg",
             width: 150,
           ),
 
@@ -22,7 +22,7 @@ class SignUpScreen extends StatelessWidget {
         ),
         mobileChild: MobileLayout(
           imageWidget: Image.asset(
-            "assets/images/signup.png",
+            "assets/images/school_building.jpg",
             width: 75,
           ),
           dataWidget: SignUpForm(),

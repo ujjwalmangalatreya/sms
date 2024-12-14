@@ -13,7 +13,7 @@ class SignInScreen extends StatelessWidget {
     return ResponsiveLayout(
         webChild: WebLayout(
           imageWidget: Image.asset(
-            "assets/images/login.png",
+            "assets/logos/school_logo.png",
             width: 150,
           ),
           dataWidget:
@@ -21,7 +21,7 @@ class SignInScreen extends StatelessWidget {
         ),
         mobileChild: MobileLayout(
           imageWidget: Image.asset(
-            "assets/images/login.png",
+            "assets/logos/school_logo.png",
             width: 75,
           ),
           dataWidget: LoginForm(),

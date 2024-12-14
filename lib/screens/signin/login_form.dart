@@ -112,28 +112,25 @@ class LoginForm extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const SocialMediaOptions(),
-          const SizedBox(
-            height: 30,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("Don't have an account? "),
-              InkWell(
-                onTap: () {
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SignUpScreen()),
-                      (route) => false);
-                },
-                child: const Text("Sign Up",
-                    style: TextStyle(
-                        color: Colors.blue, fontWeight: FontWeight.bold)),
-              )
-            ],
-          )
+          
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     const Text("Don't have an account? "),
+          //     InkWell(
+          //       onTap: () {
+          //         Navigator.pushAndRemoveUntil(
+          //             context,
+          //             MaterialPageRoute(
+          //                 builder: (context) => const SignUpScreen()),
+          //             (route) => false);
+          //       },
+          //       child: const Text("Sign Up",
+          //           style: TextStyle(
+          //               color: Colors.blue, fontWeight: FontWeight.bold)),
+          //     )
+          //   ],f
+          // )
         ],
       ),
     );

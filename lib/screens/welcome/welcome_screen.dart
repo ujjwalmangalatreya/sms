@@ -6,14 +6,14 @@ import 'package:schoolmgmt/screens/welcome/login_register_button.dart';
 
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayout(
         webChild: WebLayout(
           imageWidget: Image.asset(
-            "assets/images/welcome.jpg",
+            "assets/logos/school_logo.png",
             width: 250,
             height: 250,
           ),
@@ -22,7 +22,7 @@ class WelcomeScreen extends StatelessWidget {
         ),
         mobileChild: MobileLayout(
           imageWidget: Image.asset(
-            "assets/images/welcome.jpg", // lets configure assets in pubspec.yaml file
+            "assets/logos/school_logo.png", // lets configure assets in pubspec.yaml file
             height: 150,
           ),
           dataWidget: const LoginRegisterButtons(),

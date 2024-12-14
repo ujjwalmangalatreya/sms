@@ -13,11 +13,6 @@ class LoginRegisterButtons extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          const Text(
-            "Welcome To ECL",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-          ),
-
           const SizedBox(
             height: 20,
           ),
@@ -37,16 +32,16 @@ class LoginRegisterButtons extends StatelessWidget {
             height: 10,
           ),
 
-          RoundedButton(
-              label: "SIGN UP",
-              onPressed: () {
-                //We will write code here to open sign up screen
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SignUpScreen()),
-                    (route) => false); //Now lets check
-              }),
+          // RoundedButton(
+          //     label: "SIGN UP",
+          //     onPressed: () {
+          //       //We will write code here to open sign up screen
+          //       Navigator.pushAndRemoveUntil(
+          //           context,
+          //           MaterialPageRoute(
+          //               builder: (context) => const SignUpScreen()),
+          //           (route) => false); //Now lets check
+          //     }),
         ],
       ),
     );

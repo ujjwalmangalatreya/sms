@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:schoolmgmt/components/rounded_button.dart';
-import 'package:schoolmgmt/components/social_media_options.dart';
 import 'package:schoolmgmt/screens/signin/signin_screen.dart';
 
 
@@ -149,10 +148,7 @@ class SignUpForm extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const SocialMediaOptions(),
-          const SizedBox(
-            height: 30,
-          ),
+        
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

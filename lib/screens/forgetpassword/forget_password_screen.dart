@@ -11,7 +11,7 @@ class ForgotPasswordScreen extends StatelessWidget {
     return ResponsiveLayout(
         webChild: WebLayout(
           imageWidget: Image.asset(
-            "assets/images/forgot-password.png",
+            "assets/logos/school_logo.png",
             width: 150,
           ),
           dataWidget:
@@ -19,7 +19,7 @@ class ForgotPasswordScreen extends StatelessWidget {
         ),
         mobileChild: MobileLayout(
           imageWidget: Image.asset(
-            "assets/images/forgot-password.png",
+            "assets/logos/school_logo.png",
             width: 75,
           ),
           dataWidget: ForgotPasswordForm(),
