@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schoolmgmt/core/constants/app_colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,7 +10,7 @@ class HomeScreen extends StatelessWidget {
       height: 100,
       width: 100,
       decoration: BoxDecoration(
-        color: Colors.blue,
+        color: AppColors.appPrimaryColor,
       ),
       child: Center(
         child: Text(
