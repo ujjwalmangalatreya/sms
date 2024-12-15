@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       title: 'School Management System',
       getPages: AppPages.routes,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 157, 109, 239)),
         useMaterial3: true,
       ),
       initialRoute: AppRoutes.initialRoutes,
