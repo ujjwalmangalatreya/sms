@@ -1,10 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:schoolmgmt/screens/welcome/welcome_screen.dart';
+import 'package:get/get.dart';
+import 'package:schoolmgmt/features/home_screen.dart/home_screen.dart';
+import 'package:schoolmgmt/routes/app_pages.dart';
+import 'package:schoolmgmt/routes/app_routes.dart';
+import 'package:url_strategy/url_strategy.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
+  setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
 
   if (kIsWeb) {
@@ -35,15 +40,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'School Management System',
+      getPages: AppPages.routes,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      initialRoute: AppRoutes.initialRoutes,
       debugShowCheckedModeBanner: false,
-      home: const WelcomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
-
