@@ -13,6 +13,11 @@ class AppFonts{
     fontSize: 13,
     fontFamily: 'sms_fonts',
   );
+  static const TextStyle loginPageText = TextStyle(
+    color: Colors.black,
+    fontSize: 13,
+    fontFamily: 'sms_fonts',
+  );
   static const TextStyle featureHeader = TextStyle(
     color: Colors.white,
     fontWeight: FontWeight.w500,

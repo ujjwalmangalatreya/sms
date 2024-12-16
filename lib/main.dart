@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:schoolmgmt/core/utils/responsive_layout.dart';
+import 'package:schoolmgmt/features/home_screen.dart/home_screen_tablet_view.dart';
 import 'package:schoolmgmt/features/home_screen.dart/home_screen_web_view.dart';
 import 'package:schoolmgmt/features/home_screen.dart/home_screen_mobile_view.dart';
 import 'package:schoolmgmt/routes/app_pages.dart';
@@ -50,11 +51,13 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 157, 109, 239)),
         useMaterial3: true,
       ),
-      initialRoute: AppRoutes.initialRoutes,
+      //initialRoute: AppRoutes.initialRoutes,
+      initialRoute: kDebugMode ? '/login' : '/home',
+      
       debugShowCheckedModeBanner: false,
       home: ResponsiveLayout(
         mobileView: HomeScreenMobile(),
-        tabletView: HomeScreen(),
+        tabletView: HomeScreenTablet(),
         webView: HomeScreen(),
       ),
     );

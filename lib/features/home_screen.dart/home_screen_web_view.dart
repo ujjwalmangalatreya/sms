@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:schoolmgmt/core/constants/app_assets.dart';
 import 'package:schoolmgmt/core/constants/app_colors.dart';
 import 'package:schoolmgmt/core/constants/app_fonts.dart';
 import 'package:schoolmgmt/core/utils/clipper.dart';
 import 'package:schoolmgmt/core/widgets/feature_grid.dart';
+import 'package:schoolmgmt/features/auth/views/login_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -36,7 +38,9 @@ class HomeScreen extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {
+              Get.to(LoginPage())
+            },
             child: const Text("Login"),
           ),
         ),

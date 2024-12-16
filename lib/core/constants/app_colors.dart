@@ -7,4 +7,9 @@ class AppColors {
 
   static const homePageSecondSection = Color(0xFF0F5EF7);
   static const homePagefooterSection = Color(0xFF05183B);
+  
+  //Login Page
+  static const loginFormSection = Color(0xFFFFFFFF);
+  static const loginSecondSection = Color(0xFF049BE5);
+  
 }
