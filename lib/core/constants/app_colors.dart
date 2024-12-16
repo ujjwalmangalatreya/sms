@@ -6,4 +6,5 @@ class AppColors {
   static const appAppbarColor = Color(0xFFD6160A);
 
   static const homePageSecondSection = Color(0xFF0F5EF7);
+  static const homePagefooterSection = Color(0xFF05183B);
 }
