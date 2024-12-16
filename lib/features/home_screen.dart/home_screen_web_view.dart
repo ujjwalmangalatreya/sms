@@ -223,8 +223,32 @@ class _FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
       decoration: BoxDecoration(color: AppColors.homePagefooterSection),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        Column(
+          children: [
+            SizedBox(
+              height: 170,
+              width: 170,
+              child: Image.asset(AppAssets.schoolLogo),
+            ),
+            SizedBox(   
+              child: Text(
+                "eSkooly is the world's best and #1 ranked free online school management software.",
+                style: AppFonts.bodyText,
+                maxLines: 3,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Copyright © 2024 eSkooli (STATECH Private) Ltd. - All rights reserved.",
+              style: AppFonts.bodyText,
+            ),
+          ],
+        ),
+      ]),
     );
   }
 }
