@@ -2,7 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-import 'package:schoolmgmt/features/home_screen.dart/home_screen.dart';
+import 'package:schoolmgmt/core/utils/responsive_layout.dart';
+import 'package:schoolmgmt/features/home_screen.dart/home_screen_web_view.dart';
+import 'package:schoolmgmt/features/home_screen.dart/home_screen_mobile_view.dart';
 import 'package:schoolmgmt/routes/app_pages.dart';
 import 'package:schoolmgmt/routes/app_routes.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -44,12 +46,17 @@ class MyApp extends StatelessWidget {
       title: 'School Management System',
       getPages: AppPages.routes,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 157, 109, 239)),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 157, 109, 239)),
         useMaterial3: true,
       ),
       initialRoute: AppRoutes.initialRoutes,
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: ResponsiveLayout(
+        mobileView: HomeScreenMobile(),
+        tabletView: HomeScreen(),
+        webView: HomeScreen(),
+      ),
     );
   }
 }
