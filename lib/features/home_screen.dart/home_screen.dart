@@ -11,234 +11,220 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset(AppAssets.schoolLogo),
-        ),
-        backgroundColor: AppColors.homePageFirstSection,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child:
-                ElevatedButton(onPressed: () => {}, child: const Text("Login")),
-          )
-        ],
-      ),
+      appBar: _buildAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              color: AppColors.homePageSecondSection,
-              child: ClipPath(
-                clipper: CustomShapeClipper(),
-                child: Container(
-                  width: MediaQuery.sizeOf(context).width,
-                  decoration: BoxDecoration(
-                    color: AppColors.homePageFirstSection,
-                  ),
-                  child: Column(
-                    children: [
-                      Divider(),
-                      // Online School Text
-                      Text(
-                        "Online School",
-                        style: AppFonts.homePageTitle,
-                      ),
-                      // Management Software Text
-                      Text(
-                        "Management Software.",
-                        style: AppFonts.homePageTitle,
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      // Now you can text
-                      Text(
-                        "Now you can manage your school, college, or any edicational center with eskool",
-                        textAlign: TextAlign.center,
-                        softWrap: true,
-                        style: AppFonts.bodyText,
-                      ),
-
-                      SizedBox(
-                        height: 20,
-                      ),
-                      //Mobile Laptop Image
-                      Image.asset(AppAssets.mobileLaptop),
-                      SizedBox(
-                        height: 100,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              color: AppColors.homePageFirstSection,
-              child: ClipPath(
-                clipper: CustomShapeClipper(),
-                child: Container(
-                  color: AppColors.homePageSecondSection,
-                  width: MediaQuery.sizeOf(context).width,
-                  child: Center(
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text("Features Of School Management Software",
-                            style: AppFonts.homePageTitle),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(100, 10, 100, 0),
-                          child: Text(
-                            "eSkooly is a complete and feature-rich school management software for all educational institutes. This school management software is for learning, administration, and management activities in schools, colleges, universities, tuition centers, or training centers. Our free school management system manages everything starting from admission to attendance and exams to result in cards.",
-                            textAlign: TextAlign.center,
-                            softWrap: true,
-                            style: AppFonts.bodyText,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        FeatureGrid(),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              width: MediaQuery.sizeOf(context).width,
-              decoration: BoxDecoration(
-                color: AppColors.homePageFirstSection,
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    "Drop Us a Line",
-                    style: AppFonts.homePageTitle,
-                  ),
-                  Text(
-                    "Ask us a question, or just say Hello.",
-                    style: AppFonts.bodyText,
-                  ),
-                  SizedBox(height: 40),
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: AppColors.homePageFirstSection,
-              ),
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(250, 10, 250, 0),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'First Name *',
-                              fillColor: Colors.white,
-                              filled: true,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 16.0),
-                        Expanded(
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'Last Name *',
-                              filled: true,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 16.0),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'Email *',
-                              fillColor: Colors.white,
-                              filled: true,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 16.0),
-                        Expanded(
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'Phone',
-                              fillColor: Colors.white,
-                              filled: true,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 16.0),
-                    TextFormField(
-                      maxLines: 5,
-                      decoration: InputDecoration(
-                        labelText: 'Message *',
-                        fillColor: Colors.white,
-                        filled: true,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 16.0),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Handle form submission
-                      },
-                      child: Text('Send Message'),
-                    ),
-                    // Add the contact information section here
-                    SizedBox(height: 16.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.email),
-                        SizedBox(width: 8.0),
-                        Text('Contact us by email',style: AppFonts.bodyText,),
-                        SizedBox(width: 8.0),
-                        Text('mail@eskooly.com',
-                          style: AppFonts.bodyText,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              height: 100,
-              decoration: BoxDecoration(
-                color: AppColors.homePagefooterSection
-              ),
-            )
+            _HeroSection(),
+            _FeatureSection(),
+            _ContactUsSection(),
+            _FooterSection(),
           ],
         ),
       ),
+    );
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      leading: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Image.asset(AppAssets.schoolLogo),
+      ),
+      backgroundColor: AppColors.homePageFirstSection,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton(
+            onPressed: () => {},
+            child: const Text("Login"),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _HeroSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
+    return Container(
+      color: AppColors.homePageSecondSection,
+      child: ClipPath(
+        clipper: CustomShapeClipper(),
+        child: Container(
+          width: width,
+          decoration: BoxDecoration(
+            color: AppColors.homePageFirstSection,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                const SizedBox(height: 20),
+                Text("Online School", style: AppFonts.homePageTitle),
+                Text("Management Software.", style: AppFonts.homePageTitle),
+                const SizedBox(height: 20),
+                Text(
+                  "Now you can manage your school, college, or any educational center with eSkooly",
+                  textAlign: TextAlign.center,
+                  softWrap: true,
+                  style: AppFonts.bodyText,
+                ),
+                const SizedBox(height: 20),
+                Image.asset(AppAssets.mobileLaptop),
+                const SizedBox(height: 40),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _FeatureSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final isWideScreen = MediaQuery.of(context).size.width > 800;
+
+    return Container(
+      color: AppColors.homePageFirstSection,
+      child: ClipPath(
+        clipper: CustomShapeClipper(),
+        child: Container(
+          color: AppColors.homePageSecondSection,
+          width: MediaQuery.of(context).size.width,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: isWideScreen ? 100 : 16),
+            child: Column(
+              children: [
+                const SizedBox(height: 20),
+                Text(
+                  "Features Of School Management Software",
+                  style: AppFonts.homePageTitle,
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  "eSkooly is a complete and feature-rich school management software for all educational institutes. This school management software is for learning, administration, and management activities in schools, colleges, universities, tuition centers, or training centers. Our free school management system manages everything starting from admission to attendance and exams to result cards.",
+                  textAlign: TextAlign.center,
+                  softWrap: true,
+                  style: AppFonts.bodyText,
+                ),
+                const SizedBox(height: 30),
+                FeatureGrid(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ContactUsSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final isWideScreen = width > 800;
+
+    return Container(
+      color: AppColors.homePageFirstSection,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+            horizontal: isWideScreen ? 250 : 16, vertical: 20),
+        child: Column(
+          children: [
+            Text("Drop Us a Line", style: AppFonts.homePageTitle),
+            Text("Ask us a question, or just say Hello.",
+                style: AppFonts.bodyText),
+            const SizedBox(height: 20),
+            _ContactForm(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ContactForm extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: _buildTextFormField("First Name *"),
+            ),
+            const SizedBox(width: 16.0),
+            Expanded(
+              child: _buildTextFormField("Last Name *"),
+            ),
+          ],
+        ),
+        const SizedBox(height: 16.0),
+        Row(
+          children: [
+            Expanded(
+              child: _buildTextFormField("Email *"),
+            ),
+            const SizedBox(width: 16.0),
+            Expanded(
+              child: _buildTextFormField("Phone"),
+            ),
+          ],
+        ),
+        const SizedBox(height: 16.0),
+        _buildTextFormField("Message *", maxLines: 5),
+        const SizedBox(height: 16.0),
+        ElevatedButton(
+          onPressed: () {
+            // Handle form submission
+          },
+          child: const Text('Send Message'),
+        ),
+        const SizedBox(height: 16.0),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.email),
+            const SizedBox(width: 8.0),
+            Text('Contact us by email', style: AppFonts.bodyText),
+            const SizedBox(width: 8.0),
+            Text(
+              'mail@eskooly.com',
+              style: AppFonts.bodyText,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTextFormField(String label, {int maxLines = 1}) {
+    return TextFormField(
+      maxLines: maxLines,
+      decoration: InputDecoration(
+        labelText: label,
+        fillColor: Colors.white,
+        filled: true,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25.0),
+        ),
+      ),
+    );
+  }
+}
+
+class _FooterSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      decoration: BoxDecoration(color: AppColors.homePagefooterSection),
     );
   }
 }
