@@ -4,6 +4,7 @@ import 'package:schoolmgmt/core/constants/app_assets.dart';
 import 'package:schoolmgmt/core/constants/app_colors.dart';
 import 'package:schoolmgmt/core/constants/app_fonts.dart';
 import 'package:schoolmgmt/core/widgets/login_cirular_avatar.dart';
+import 'package:schoolmgmt/routes/app_routes.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -85,6 +86,7 @@ class _LoginFirstSectionState extends State<_LoginFirstSection> {
           ),
           ElevatedButton(
             onPressed: () {
+              Get.toNamed(AppRoutes.dashboard);
               Get.snackbar("Congratulations..", "You are loggedin..");
             },
             style: ElevatedButton.styleFrom(
