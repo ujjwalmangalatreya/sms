@@ -1,13 +1,15 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:schoolmgmt/core/constants/app_texts.dart';
 import 'package:schoolmgmt/core/utils/responsive_layout.dart';
-import 'package:schoolmgmt/features/home_screen.dart/home_screen_tablet_view.dart';
-import 'package:schoolmgmt/features/home_screen.dart/home_screen_web_view.dart';
-import 'package:schoolmgmt/features/home_screen.dart/home_screen_mobile_view.dart';
+import 'package:schoolmgmt/features/home_screen.dart/tablet_view.dart';
+import 'package:schoolmgmt/features/home_screen.dart/web_view.dart';
+import 'package:schoolmgmt/features/home_screen.dart/mobile_view.dart';
 import 'package:schoolmgmt/routes/app_routes.dart';
+import 'package:schoolmgmt/routes/routes.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'firebase_options.dart';
 
@@ -34,7 +36,9 @@ Future<void> main() async {
     );
   }
 
-  runApp(const MyApp());
+  runApp(DevicePreview(
+      enabled: true,
+      builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -47,15 +51,19 @@ class MyApp extends StatelessWidget {
       title: TTexts.appName,
       getPages: TAppRoutes.pages,
       theme: ThemeData(
-      colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 157, 109, 239)),useMaterial3: true,),
-      unknownRoute: GetPage(name: '/page-not-found', page: () => const Scaffold(body: Center(child: Text("PAGE NOT FOUND"),),)),
-      initialRoute: kDebugMode ? '/login' : '/home',
-      debugShowCheckedModeBanner: false,
-      home: ResponsiveLayout(
-        mobileView: HomeScreenMobile(),
-        tabletView: HomeScreenTablet(),
-        webView: HomeScreen(),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 157, 109, 239)),
+        useMaterial3: true,
       ),
+      unknownRoute: GetPage(
+          name: '/page-not-found',
+          page: () => const Scaffold(
+                body: Center(
+                  child: Text("PAGE NOT FOUND"),
+                ),
+              )),
+      initialRoute: kDebugMode ? TRoutes.home : TRoutes.login,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
