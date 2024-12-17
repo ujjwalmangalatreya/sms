@@ -4,19 +4,27 @@ import 'package:schoolmgmt/core/constants/colors.dart';
 import 'package:schoolmgmt/core/constants/app_fonts.dart';
 import 'package:schoolmgmt/core/constants/images.dart';
 import 'package:schoolmgmt/core/widgets/login_cirular_avatar.dart';
-import 'package:schoolmgmt/routes/routes.dart';
+import 'package:schoolmgmt/features/auth/controllers/auth_controller.dart';
 
 class WebLoginPage extends StatelessWidget {
   const WebLoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final AuthController authController = Get.find<AuthController>();
+    final TextEditingController eController = TextEditingController();
+    final TextEditingController pController = TextEditingController();
+
     return Scaffold(
       body: Row(
         children: [
           // First Section
-          const Expanded(
-            child: _LoginFirstSection(),
+          Expanded(
+            child: _LoginFirstSection(
+              emailController: eController,
+              passwordController: pController,
+              authController: authController,
+            ),
           ),
 
           // Second Section
@@ -38,7 +46,14 @@ class WebLoginPage extends StatelessWidget {
 }
 
 class _LoginFirstSection extends StatefulWidget {
-  const _LoginFirstSection();
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final AuthController authController;
+
+  const _LoginFirstSection(
+      {required this.emailController,
+      required this.passwordController,
+      required this.authController});
 
   @override
   State<_LoginFirstSection> createState() => _LoginFirstSectionState();
@@ -77,18 +92,23 @@ class _LoginFirstSectionState extends State<_LoginFirstSection> {
           SizedBox(
             height: 20,
           ),
-          _buildTextFormField("Username or Email *", icon: Icons.person),
+          _buildTextFormField(
+            "Username or Email *",
+            icon: Icons.person,
+            controller: widget.emailController,
+          ),
           SizedBox(
             height: 10,
           ),
-          _buildTextFormField("Password *", icon: Icons.key),
+          _buildTextFormField("Password *",
+              icon: Icons.key, controller: widget.passwordController),
           SizedBox(
             height: 20,
           ),
           ElevatedButton(
             onPressed: () {
-              Get.toNamed(TRoutes.dashboard);
-              Get.snackbar("Congratulations..", "You are loggedin..");
+              widget.authController.login(
+                  widget.emailController.text, widget.passwordController.text);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue, // Background color
@@ -172,12 +192,15 @@ class _SelectionRow extends StatelessWidget {
 }
 
 Widget _buildTextFormField(String label,
-    {int maxLines = 1, required IconData icon}) {
+    {int maxLines = 1,
+    required IconData icon,
+    required TextEditingController controller}) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 20.0),
     child: SizedBox(
       width: 300,
       child: TextFormField(
+        controller: controller,
         maxLines: maxLines,
         decoration: InputDecoration(
           prefixIcon: Icon(icon),

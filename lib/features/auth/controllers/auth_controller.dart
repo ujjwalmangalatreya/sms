@@ -1,48 +1,29 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:schoolmgmt/core/services/auth_services.dart';
 import 'package:schoolmgmt/routes/routes.dart';
 
 class AuthController extends GetxController {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final AuthServices _authService = AuthServices();
 
-  var user = Rxn<User>();
-  var isLoading = false.obs;
+  Rxn user = Rxn();
+  RxBool isLoading = false.obs;
 
-  @override
-  void onInit() {
-    user.bindStream(_firebaseAuth.authStateChanges());
-    super.onInit();
-  }
-
-  //Login with email and Password
-
-  Future<void> loginWithEmailAndPassword(String email, String password) async {
+  Future<void> login(String email, String password) async {
     isLoading.value = true;
-    try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
-    } on FirebaseAuthException catch (e) {
-      // ignore: unused_local_variable
-      String errorMessage;
-      if (e.code == 'user-not-found') {
-        errorMessage = 'No user found for that email';
-      } else if (e.code == 'wrong-password') {
-        errorMessage = 'Wrong password provided';
-      } else {
-        errorMessage = 'An error occured : ${e.message}';
-      }
-      Get.snackbar(
-        'Login Failed',
-        errorMessage,
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    } finally {
-      isLoading.value = false;
+    var result = await _authService.loginUser(email, password);
+    print(result);
+    if (result != null) {
+      user.value = result;
+      Get.offAllNamed(TRoutes.dashboard); // Navigate to Home on success
+    } else {
+      Get.snackbar("Error", "Invalid credentials");
     }
+    isLoading.value = false;
   }
 
   Future<void> logout() async {
-    await _firebaseAuth.signOut();
+    await _authService.logOutUser();
+    user.value = null;
     Get.offAllNamed(TRoutes.login);
   }
 }

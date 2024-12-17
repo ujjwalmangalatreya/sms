@@ -23,6 +23,7 @@ Future<void> main() async {
         storageBucket: "schoolmgmt-2025.firebasestorage.app",
         messagingSenderId: "907084167150",
         appId: "1:907084167150:web:f7ccd4e36432c83480c0ff",
+        databaseURL: "https://schoolmgmt-2025.firebaseio.com",
       ),
     );
   } else {
@@ -32,9 +33,9 @@ Future<void> main() async {
     );
   }
 
-  runApp(DevicePreview(
-      enabled: true,
-      builder: (context) => const MyApp()));
+  //runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

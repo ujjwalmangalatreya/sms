@@ -1,6 +1,6 @@
-
 import 'package:get/get.dart';
 import 'package:schoolmgmt/core/widgets/responsive/responsive_layout.dart';
+import 'package:schoolmgmt/features/auth/bindings/auth_binding.dart';
 import 'package:schoolmgmt/features/auth/views/mobile_login.dart';
 import 'package:schoolmgmt/features/auth/views/tablet_login.dart';
 import 'package:schoolmgmt/features/auth/views/web_login.dart';
@@ -29,6 +29,7 @@ class TAppRoutes {
         tabletView: TabletLoginPage(),
         webView: WebLoginPage(),
       ),
+      binding: AuthBiniding(),
     ),
     /** Dashboard Screen */
     GetPage(
