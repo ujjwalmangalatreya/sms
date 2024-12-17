@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:schoolmgmt/core/constants/app_fonts.dart';
 
-class HomeScreenTablet extends StatelessWidget {
-  const HomeScreenTablet({super.key});
+class TabletHomeScreen extends StatelessWidget {
+  const TabletHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

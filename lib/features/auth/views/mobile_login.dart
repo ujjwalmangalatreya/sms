@@ -6,32 +6,14 @@ import 'package:schoolmgmt/core/constants/images.dart';
 import 'package:schoolmgmt/core/widgets/login_cirular_avatar.dart';
 import 'package:schoolmgmt/routes/routes.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class MobileLoginPage extends StatelessWidget {
+  const MobileLoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        children: [
-          // First Section
-          const Expanded(
-            child: _LoginFirstSection(),
-          ),
-
-          // Second Section
-          Expanded(
-            child: Container(
-              color: TColors.loginSecondSection,
-              child: const Center(
-                child: Text(
-                  'Skool will have more design here.....',
-                  style: TextStyle(color: Colors.white, fontSize: 24),
-                ),
-              ),
-            ),
-          ),
-        ],
+      body: SafeArea(
+        child: _LoginFirstSection(),
       ),
     );
   }
@@ -53,6 +35,7 @@ class _LoginFirstSectionState extends State<_LoginFirstSection> {
       color: TColors.loginFormSection,
       child: Column(
         children: [
+          const SizedBox(height: 60),
           const SizedBox(height: 100, child: Center(child: _SchoolLogo())),
           const SizedBox(height: 10),
           Text(

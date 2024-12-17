@@ -7,6 +7,12 @@ class AppFonts{
     fontWeight: FontWeight.w500,
     fontFamily: 'sms_fonts', // Replace with your font family
   );
+  static const TextStyle mobileHomePageTitle = TextStyle(
+    fontSize: 35,
+    color: Colors.white,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'sms_fonts', // Replace with your font family
+  );
 
   static const TextStyle bodyText = TextStyle(
     color: Colors.white,
@@ -22,6 +28,12 @@ class AppFonts{
     color: Colors.white,
     fontWeight: FontWeight.w500,
     fontSize: 25,
+    fontFamily: 'sms_fonts',
+  );
+  static const TextStyle mobileFeatureHeader = TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.w500,
+    fontSize: 20,
     fontFamily: 'sms_fonts',
   );
 }

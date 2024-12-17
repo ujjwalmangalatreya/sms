@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:schoolmgmt/core/constants/colors.dart';
 import 'package:schoolmgmt/core/constants/app_fonts.dart';
 import 'package:schoolmgmt/core/constants/images.dart';
 import 'package:schoolmgmt/core/utils/clipper.dart';
 import 'package:schoolmgmt/core/widgets/feature_grid.dart';
+import 'package:schoolmgmt/routes/routes.dart';
 
-class HomeScreenMobile extends StatelessWidget {
-  const HomeScreenMobile({super.key});
+class MobileHomeScreen extends StatelessWidget {
+  const MobileHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,9 @@ class HomeScreenMobile extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {
+              Get.toNamed(TRoutes.login)
+            },
             child: const Text("Login"),
           ),
         ),
@@ -59,8 +63,9 @@ class _HeroSectionMobile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("Online School", style: AppFonts.homePageTitle),
-                Text("Management Software.", style: AppFonts.homePageTitle),
+                Center(child: Text("Online School ", style: AppFonts.homePageTitle,textAlign: TextAlign.center,)),
+                Center(child: Text("Management Software.", style: AppFonts.homePageTitle,
+                        textAlign: TextAlign.center)),
                 const SizedBox(height: 20),
                 Text(
                   "Now you can manage your school, college, or any educational center with eSkooly",
@@ -72,7 +77,7 @@ class _HeroSectionMobile extends StatelessWidget {
                   TImages.mobileLaptop,
                   width: MediaQuery.of(context).size.width * 0.8,
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 50),
               ],
             ),
           ),
@@ -98,7 +103,7 @@ class _FeatureSectionMobile extends StatelessWidget {
               children: [
                 Text(
                   "Features Of School Management Software",
-                  style: AppFonts.homePageTitle,
+                  style: AppFonts.mobileHomePageTitle,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10),
@@ -107,8 +112,8 @@ class _FeatureSectionMobile extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: AppFonts.bodyText,
                 ),
-                const SizedBox(height: 30),
-                FeatureGrid(), // Make sure FeatureGrid is mobile-friendly.
+                const SizedBox(height: 10),
+                FeatureGrid(crAxisCount: 1,), // Make sure FeatureGrid is mobile-friendly.
               ],
             ),
           ),

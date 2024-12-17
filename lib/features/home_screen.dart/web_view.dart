@@ -6,15 +6,16 @@ import 'package:schoolmgmt/core/constants/app_fonts.dart';
 import 'package:schoolmgmt/core/constants/images.dart';
 import 'package:schoolmgmt/core/utils/clipper.dart';
 import 'package:schoolmgmt/core/widgets/feature_grid.dart';
-import 'package:schoolmgmt/features/auth/views/login_screen.dart';
+import 'package:schoolmgmt/routes/routes.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class WebHomeScreen extends StatelessWidget {
+  const WebHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
+      
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -39,7 +40,7 @@ class HomeScreen extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () => {Get.to(LoginPage())},
+            onPressed: () => {Get.toNamed(TRoutes.login)},
             child: const Text("Login"),
           ),
         ),
@@ -117,7 +118,7 @@ class _FeatureSection extends StatelessWidget {
                   style: AppFonts.bodyText,
                 ),
                 const SizedBox(height: 30),
-                FeatureGrid(),
+                FeatureGrid(crAxisCount: 4,),
               ],
             ),
           ),
