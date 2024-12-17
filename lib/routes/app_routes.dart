@@ -35,6 +35,7 @@ class TAppRoutes {
     GetPage(
       name: TRoutes.dashboard,
       page: () => DashboardPage(),
+      bindings: [AuthBiniding()]
     ),
   ];
 }

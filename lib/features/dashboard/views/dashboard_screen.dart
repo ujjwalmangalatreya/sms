@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:schoolmgmt/features/auth/controllers/auth_controller.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -9,6 +11,7 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
+  final AuthController authController = Get.find<AuthController>();
 
   final _pages = [
     Center(child: Text('Page 1')),
@@ -33,7 +36,7 @@ class _DashboardPageState extends State<DashboardPage> {
               child: Text('Drawer Header'),
             ),
             ListTile(
-              title: Text('Page 1'),
+              title: Text('D A S H B O A R D'),
               onTap: () {
                 setState(() {
                   _selectedIndex = 0;
@@ -42,7 +45,7 @@ class _DashboardPageState extends State<DashboardPage> {
               },
             ),
             ListTile(
-              title: Text('Page 2'),
+              title: Text('S T U D E N T S'),
               onTap: () {
                 setState(() {
                   _selectedIndex = 1;
@@ -51,12 +54,9 @@ class _DashboardPageState extends State<DashboardPage> {
               },
             ),
             ListTile(
-              title: Text('Page 3'),
+              title: Text('L O G O U T'),
               onTap: () {
-                setState(() {
-                  _selectedIndex = 2;
-                });
-                Navigator.pop(context);
+                authController.logout();
               },
             ),
           ],

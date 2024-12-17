@@ -105,20 +105,36 @@ class _LoginFirstSectionState extends State<_LoginFirstSection> {
           SizedBox(
             height: 20,
           ),
-          ElevatedButton(
-            onPressed: () {
-              widget.authController.login(
-                  widget.emailController.text, widget.passwordController.text);
+          Obx(
+            () {
+              return ElevatedButton(
+                onPressed: () {
+                  if (!widget.authController.isLoading.value) {
+                    widget.authController.login(widget.emailController.text,
+                        widget.passwordController.text);
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  disabledBackgroundColor: Colors.grey,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                        10.0), // Adjust the radius as needed
+                  ),
+                  alignment: Alignment.centerRight, // Align text to the right
+                ),
+                child: widget.authController.isLoading.value
+                    ? SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                          strokeWidth: 2,
+                        ),
+                      )
+                    : Text("Login", style: AppFonts.bodyText),
+              );
             },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue, // Background color
-              shape: RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(10.0), // Adjust the radius as needed
-              ),
-              alignment: Alignment.centerRight, // Align text to the right
-            ),
-            child: Text("Login", style: AppFonts.bodyText),
           ),
           SizedBox(
             height: 40,

@@ -11,10 +11,9 @@ class AuthController extends GetxController {
   Future<void> login(String email, String password) async {
     isLoading.value = true;
     var result = await _authService.loginUser(email, password);
-    print(result);
     if (result != null) {
       user.value = result;
-      Get.offAllNamed(TRoutes.dashboard); // Navigate to Home on success
+      Get.offAllNamed(TRoutes.dashboard);
     } else {
       Get.snackbar("Error", "Invalid credentials");
     }
