@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:schoolmgmt/core/widgets/responsive/responsive_layout.dart';
 import 'package:schoolmgmt/features/auth/views/mobile_login.dart';
