@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:schoolmgmt/core/constants/app_assets.dart';
-import 'package:schoolmgmt/core/constants/app_colors.dart';
+import 'package:schoolmgmt/core/constants/app_texts.dart';
+import 'package:schoolmgmt/core/constants/colors.dart';
 import 'package:schoolmgmt/core/constants/app_fonts.dart';
+import 'package:schoolmgmt/core/constants/images.dart';
 import 'package:schoolmgmt/core/utils/clipper.dart';
 import 'package:schoolmgmt/core/widgets/feature_grid.dart';
 import 'package:schoolmgmt/features/auth/views/login_screen.dart';
@@ -31,16 +32,14 @@ class HomeScreen extends StatelessWidget {
     return AppBar(
       leading: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Image.asset(AppAssets.schoolLogo),
+        child: Image.asset(TImages.schoolLogo),
       ),
-      backgroundColor: AppColors.homePageFirstSection,
+      backgroundColor: TColors.homePageFirstSection,
       actions: [
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () => {
-              Get.to(LoginPage())
-            },
+            onPressed: () => {Get.to(LoginPage())},
             child: const Text("Login"),
           ),
         ),
@@ -55,13 +54,13 @@ class _HeroSection extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
 
     return Container(
-      color: AppColors.homePageSecondSection,
+      color: TColors.homePageSecondSection,
       child: ClipPath(
         clipper: CustomShapeClipper(),
         child: Container(
           width: width,
           decoration: BoxDecoration(
-            color: AppColors.homePageFirstSection,
+            color: TColors.homePageFirstSection,
           ),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -72,13 +71,13 @@ class _HeroSection extends StatelessWidget {
                 Text("Management Software.", style: AppFonts.homePageTitle),
                 const SizedBox(height: 20),
                 Text(
-                  "Now you can manage your school, college, or any educational center with eSkooly",
+                  TTexts.heroSectionText,
                   textAlign: TextAlign.center,
                   softWrap: true,
                   style: AppFonts.bodyText,
                 ),
                 const SizedBox(height: 20),
-                Image.asset(AppAssets.mobileLaptop),
+                Image.asset(TImages.mobileLaptop),
                 const SizedBox(height: 40),
               ],
             ),
@@ -95,11 +94,11 @@ class _FeatureSection extends StatelessWidget {
     final isWideScreen = MediaQuery.of(context).size.width > 800;
 
     return Container(
-      color: AppColors.homePageFirstSection,
+      color: TColors.homePageFirstSection,
       child: ClipPath(
         clipper: CustomShapeClipper(),
         child: Container(
-          color: AppColors.homePageSecondSection,
+          color: TColors.homePageSecondSection,
           width: MediaQuery.of(context).size.width,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: isWideScreen ? 100 : 16),
@@ -107,12 +106,12 @@ class _FeatureSection extends StatelessWidget {
               children: [
                 const SizedBox(height: 20),
                 Text(
-                  "Features Of School Management Software",
+                  TTexts.homePageHeaderText,
                   style: AppFonts.homePageTitle,
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "eSkooly is a complete and feature-rich school management software for all educational institutes. This school management software is for learning, administration, and management activities in schools, colleges, universities, tuition centers, or training centers. Our free school management system manages everything starting from admission to attendance and exams to result cards.",
+                  TTexts.featureText,
                   textAlign: TextAlign.center,
                   softWrap: true,
                   style: AppFonts.bodyText,
@@ -135,14 +134,14 @@ class _ContactUsSection extends StatelessWidget {
     final isWideScreen = width > 800;
 
     return Container(
-      color: AppColors.homePageFirstSection,
+      color: TColors.homePageFirstSection,
       child: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: isWideScreen ? 250 : 16, vertical: 20),
         child: Column(
           children: [
-            Text("Drop Us a Line", style: AppFonts.homePageTitle),
-            Text("Ask us a question, or just say Hello.",
+            Text(TTexts.dropUsMessageText, style: AppFonts.homePageTitle),
+            Text(TTexts.askQuestionText,
                 style: AppFonts.bodyText),
             const SizedBox(height: 20),
             _ContactForm(),
@@ -199,7 +198,7 @@ class _ContactForm extends StatelessWidget {
             Text('Contact us by email', style: AppFonts.bodyText),
             const SizedBox(width: 8.0),
             Text(
-              'mail@eskooly.com',
+              TTexts.contactEmailText,
               style: AppFonts.bodyText,
             ),
           ],
@@ -227,18 +226,18 @@ class _FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: AppColors.homePagefooterSection),
+      decoration: BoxDecoration(color: TColors.homePagefooterSection),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         Column(
           children: [
             SizedBox(
               height: 170,
               width: 170,
-              child: Image.asset(AppAssets.schoolLogo),
+              child: Image.asset(TImages.schoolLogo),
             ),
-            SizedBox(   
+            SizedBox(
               child: Text(
-                "eSkooly is the world's best and #1 ranked free online school management software.",
+                TTexts.footerText,
                 style: AppFonts.bodyText,
                 maxLines: 3,
               ),
@@ -247,7 +246,7 @@ class _FooterSection extends StatelessWidget {
               height: 20,
             ),
             Text(
-              "Copyright © 2024 eSkooli (STATECH Private) Ltd. - All rights reserved.",
+              TTexts.copyWrightText,
               style: AppFonts.bodyText,
             ),
           ],

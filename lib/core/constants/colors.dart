@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppColors {
+class TColors {
   static const appPrimaryColor = Color(0xFFF0F1F3);
   static const homePageFirstSection = Color(0xFF082A68);
   static const appAppbarColor = Color(0xFFD6160A);

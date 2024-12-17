@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:schoolmgmt/core/constants/app_assets.dart';
-import 'package:schoolmgmt/core/constants/app_colors.dart';
+import 'package:schoolmgmt/core/constants/colors.dart';
 import 'package:schoolmgmt/core/constants/app_fonts.dart';
+import 'package:schoolmgmt/core/constants/images.dart';
 import 'package:schoolmgmt/core/utils/clipper.dart';
 import 'package:schoolmgmt/core/widgets/feature_grid.dart';
 
@@ -29,9 +29,9 @@ class HomeScreenMobile extends StatelessWidget {
     return AppBar(
       leading: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Image.asset(AppAssets.schoolLogo),
+        child: Image.asset(TImages.schoolLogo),
       ),
-      backgroundColor: AppColors.homePageFirstSection,
+      backgroundColor: TColors.homePageFirstSection,
       actions: [
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -49,11 +49,11 @@ class _HeroSectionMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.homePageSecondSection,
+      color: TColors.homePageSecondSection,
       child: ClipPath(
         clipper: CustomShapeClipper(),
         child: Container(
-          color: AppColors.homePageFirstSection,
+          color: TColors.homePageFirstSection,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -69,7 +69,7 @@ class _HeroSectionMobile extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Image.asset(
-                  AppAssets.mobileLaptop,
+                  TImages.mobileLaptop,
                   width: MediaQuery.of(context).size.width * 0.8,
                 ),
                 const SizedBox(height: 40),
@@ -86,11 +86,11 @@ class _FeatureSectionMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.homePageFirstSection,
+      color: TColors.homePageFirstSection,
       child: ClipPath(
         clipper: CustomShapeClipper(),
         child: Container(
-          color: AppColors.homePageSecondSection,
+          color: TColors.homePageSecondSection,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -122,7 +122,7 @@ class _ContactUsSectionMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.homePageFirstSection,
+      color: TColors.homePageFirstSection,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -191,7 +191,7 @@ class _FooterSectionMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 100,
-      color: AppColors.homePagefooterSection,
+      color: TColors.homePagefooterSection,
       alignment: Alignment.center,
       child: Text(
         "© 2024 eSkooly - All Rights Reserved",

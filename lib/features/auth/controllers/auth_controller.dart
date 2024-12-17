@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:schoolmgmt/routes/app_routes.dart';
+import 'package:schoolmgmt/routes/routes.dart';
 
 class AuthController extends GetxController {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -43,6 +43,6 @@ class AuthController extends GetxController {
 
   Future<void> logout() async {
     await _firebaseAuth.signOut();
-    Get.offAllNamed(AppRoutes.login);
+    Get.offAllNamed(TRoutes.login);
   }
 }

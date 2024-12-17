@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:schoolmgmt/core/constants/app_assets.dart';
-import 'package:schoolmgmt/core/constants/app_colors.dart';
+import 'package:schoolmgmt/core/constants/colors.dart';
 import 'package:schoolmgmt/core/constants/app_fonts.dart';
+import 'package:schoolmgmt/core/constants/images.dart';
 import 'package:schoolmgmt/core/widgets/login_cirular_avatar.dart';
-import 'package:schoolmgmt/routes/app_routes.dart';
+import 'package:schoolmgmt/routes/routes.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
           // Second Section
           Expanded(
             child: Container(
-              color: AppColors.loginSecondSection,
+              color: TColors.loginSecondSection,
               child: const Center(
                 child: Text(
                   'Skool will have more design here.....',
@@ -50,7 +50,7 @@ class _LoginFirstSectionState extends State<_LoginFirstSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.loginFormSection,
+      color: TColors.loginFormSection,
       child: Column(
         children: [
           const SizedBox(height: 100, child: Center(child: _SchoolLogo())),
@@ -86,7 +86,7 @@ class _LoginFirstSectionState extends State<_LoginFirstSection> {
           ),
           ElevatedButton(
             onPressed: () {
-              Get.toNamed(AppRoutes.dashboard);
+              Get.toNamed(TRoutes.dashboard);
               Get.snackbar("Congratulations..", "You are loggedin..");
             },
             style: ElevatedButton.styleFrom(
@@ -125,7 +125,7 @@ class _SchoolLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(AppAssets.schoolLogo);
+    return Image.asset(TImages.schoolLogo);
   }
 }
 

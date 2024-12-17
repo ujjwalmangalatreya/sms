@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:schoolmgmt/core/constants/app_colors.dart';
+import 'package:schoolmgmt/core/constants/colors.dart';
 import 'package:schoolmgmt/core/constants/app_fonts.dart';
 
 class FeatureGrid extends StatelessWidget {
@@ -56,14 +56,14 @@ class FeatureCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: AppColors.homePageSecondSection,
+      color: TColors.homePageSecondSection,
       elevation: 0,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 48.0,color: AppColors.appPrimaryColor,),
+            Icon(icon, size: 48.0,color: TColors.appPrimaryColor,),
             SizedBox(height: 16.0),
             Text(
               title,
