@@ -6,9 +6,9 @@ class CustomShapeClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path();
-    path.lineTo(0, size.height - 99); // Adjust the curve height as needed
+    path.lineTo(0, size.height - 0); // Adjust the curve height as needed
     var firstControlPoint = Offset(size.width / 2, size.height);
-    var firstEndPoint = Offset(size.width / 4, size.height - 1);
+    var firstEndPoint = Offset(size.width / 2, size.height - 1);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
 

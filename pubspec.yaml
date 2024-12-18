@@ -38,6 +38,8 @@ dependencies:
   firebase_auth: ^5.3.4
   get: ^4.6.6
   url_strategy: ^0.3.0
+  device_preview: ^1.2.0
+  firebase_database: ^11.2.0
 
 dev_dependencies:
   flutter_test:

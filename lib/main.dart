@@ -1,10 +1,11 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-import 'package:schoolmgmt/features/home_screen.dart/home_screen.dart';
-import 'package:schoolmgmt/routes/app_pages.dart';
+import 'package:schoolmgmt/core/constants/app_texts.dart';
 import 'package:schoolmgmt/routes/app_routes.dart';
+import 'package:schoolmgmt/routes/routes.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'firebase_options.dart';
 
@@ -22,6 +23,7 @@ Future<void> main() async {
         storageBucket: "schoolmgmt-2025.firebasestorage.app",
         messagingSenderId: "907084167150",
         appId: "1:907084167150:web:f7ccd4e36432c83480c0ff",
+        databaseURL: "https://schoolmgmt-2025.firebaseio.com",
       ),
     );
   } else {
@@ -30,6 +32,8 @@ Future<void> main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
   }
+
+  //runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
 
   runApp(const MyApp());
 }
@@ -41,15 +45,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'School Management System',
-      getPages: AppPages.routes,
+      title: TTexts.appName,
+      getPages: TAppRoutes.pages,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 157, 109, 239)),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 157, 109, 239)),
         useMaterial3: true,
       ),
-      initialRoute: AppRoutes.initialRoutes,
+      unknownRoute: GetPage(
+          name: '/page-not-found',
+          page: () => const Scaffold(
+                body: Center(
+                  child: Text("PAGE NOT FOUND"),
+                ),
+              )),
+      initialRoute: kDebugMode ? TRoutes.home : TRoutes.login,
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
     );
   }
 }
