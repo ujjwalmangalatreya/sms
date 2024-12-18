@@ -6,13 +6,8 @@ import 'package:schoolmgmt/routes/routes.dart';
 class AuthMiddleware extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
-    final AuthController authController = Get.find<AuthController>();
-    print("Here....................");
-    print(authController.user);
-    if (authController.user == null) {
-      return const RouteSettings(name: TRoutes.login);
-    }
-
-    return null;
+    return AuthController.instance.isAuthenticated
+        ? null
+        : RouteSettings(name: TRoutes.login);
   }
 }
