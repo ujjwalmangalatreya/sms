@@ -1,9 +1,9 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:schoolmgmt/core/constants/app_texts.dart';
+import 'package:schoolmgmt/features/auth/bindings/auth_binding.dart';
 import 'package:schoolmgmt/routes/app_routes.dart';
 import 'package:schoolmgmt/routes/routes.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: AuthBinding(),
       title: TTexts.appName,
       getPages: TAppRoutes.pages,
       theme: ThemeData(
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
                   child: Text("PAGE NOT FOUND"),
                 ),
               )),
-      initialRoute: kDebugMode ? TRoutes.home : TRoutes.login,
+      initialRoute: TRoutes.home,
       debugShowCheckedModeBanner: false,
     );
   }

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:schoolmgmt/core/services/auth_services.dart';
 import 'package:schoolmgmt/routes/routes.dart';
@@ -5,14 +6,14 @@ import 'package:schoolmgmt/routes/routes.dart';
 class AuthController extends GetxController {
   final AuthServices _authService = AuthServices();
 
-  Rxn user = Rxn();
+  User? user;
   RxBool isLoading = false.obs;
 
   Future<void> login(String email, String password) async {
     isLoading.value = true;
-    var result = await _authService.loginUser(email, password);
+    User? result = await _authService.loginUser(email, password);
     if (result != null) {
-      user.value = result;
+      user = result;
       Get.offAllNamed(TRoutes.dashboard);
     } else {
       Get.snackbar("Error", "Invalid credentials");
@@ -22,7 +23,7 @@ class AuthController extends GetxController {
 
   Future<void> logout() async {
     await _authService.logOutUser();
-    user.value = null;
+    user = null;
     Get.offAllNamed(TRoutes.login);
   }
 }
