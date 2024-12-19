@@ -36,4 +36,23 @@ class AppFonts{
     fontSize: 20,
     fontFamily: 'sms_fonts',
   );
+  static const TextStyle dashboardCardText = TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.w500,
+    fontSize: 20,
+    fontFamily: 'sms_fonts',
+  );
+  static const TextStyle welcomeNoteHeader = TextStyle(
+    color: Color(0xFFFF808B),
+    fontWeight: FontWeight.w500,
+    fontSize: 20,
+    fontFamily: 'sms_fonts',
+  );
+  static const TextStyle welcomeNoteDetails = TextStyle(
+    color: Color(0xFF777777),
+    fontWeight: FontWeight.w500,
+    fontSize: 13,
+    fontFamily: 'sms_fonts',
+  );
+
 }

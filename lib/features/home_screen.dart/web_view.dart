@@ -15,7 +15,7 @@ class WebHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      
+
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -33,7 +33,7 @@ class WebHomeScreen extends StatelessWidget {
     return AppBar(
       leading: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Image.asset(TImages.schoolLogo),
+        child: Image.asset(TImages.statechLogo),
       ),
       backgroundColor: TColors.homePageFirstSection,
       actions: [
@@ -234,7 +234,7 @@ class _FooterSection extends StatelessWidget {
             SizedBox(
               height: 170,
               width: 170,
-              child: Image.asset(TImages.schoolLogo),
+              child: Image.asset(TImages.statechLogo),
             ),
             SizedBox(
               child: Text(

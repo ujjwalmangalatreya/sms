@@ -11,5 +11,17 @@ class TColors {
   //Login Page
   static const loginFormSection = Color(0xFFFFFFFF);
   static const loginSecondSection = Color(0xFF049BE5);
-  
+
+  //Dahboard Colors
+  static const dashboardMainBody = Color(0xFFEDEEF2);
+  static const dashboardAppBar = Color(0xFFFFFFFF);
+  static const dashboardSideNav = Color(0xFFFCFCFC);
+
+  //Dashboard Grid Card colors
+  static const totalStudentsCardColor = Color(0xFF5655AB);
+  static const totalEmployeeCardColor = Color(0xFFA1A3D9);
+  static const totalRevenueCardColor = Color(0xFFFA8892);
+  static const totalProfitCardColor = Color(0xFF6789F5);
+
+
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:schoolmgmt/core/constants/colors.dart';
 import 'drawer_tile.dart';
 
 class DrawerMenu extends StatelessWidget {
@@ -15,6 +16,7 @@ class DrawerMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: TColors.dashboardSideNav,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
