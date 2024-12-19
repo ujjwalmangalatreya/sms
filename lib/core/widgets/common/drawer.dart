@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmgmt/core/constants/colors.dart';
+
 import 'drawer_tile.dart';
 
 class DrawerMenu extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int> onMenuSelected;
+  // final AuthController authController = Get.find()<AuthController>();
 
-  const DrawerMenu({
-    Key? key,
+  DrawerMenu({
+    super.key,
     required this.selectedIndex,
     required this.onMenuSelected,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +38,15 @@ class DrawerMenu extends StatelessWidget {
             onTap: () => onMenuSelected(2),
           ),
           DrawerTile(
-            title: 'L O G O U T',
+            title: 'P R O F I L E',
             isSelected: selectedIndex == 3,
-            onTap: () => {
-              Get.snackbar("LOGGING OUT", "Logging out part is in TODO..")
-            },
+            onTap: () => {onMenuSelected(3)},
+          ),
+          DrawerTile(
+            title: 'L O G O U T',
+            isSelected: selectedIndex == 4,
+            onTap: () =>
+                {Get.snackbar("LOGGING OUT", "Logging out part is in TODO..")},
           ),
         ],
       ),

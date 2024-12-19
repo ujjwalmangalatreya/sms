@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:schoolmgmt/core/constants/colors.dart';
 import 'package:schoolmgmt/core/constants/app_fonts.dart';
+import 'package:schoolmgmt/core/constants/app_texts.dart';
+import 'package:schoolmgmt/core/constants/colors.dart';
 
 class FeatureGrid extends StatelessWidget {
   final int crAxisCount;
@@ -16,26 +17,23 @@ class FeatureGrid extends StatelessWidget {
       children: [
         FeatureCard(
           icon: Icons.group,
-          title: 'Class Management',
-          description:
-              'This school management software manage your classes in an easy way. starts from students to subjects, courses to marks.',
+          title: TTexts.titleClassManagement,
+          description: TTexts.titleClassManagementDescription,
         ),
         FeatureCard(
           icon: Icons.school,
-          title: 'Institute Info',
-          description:
-              'You can set your all institute info like logo, name, target line ect, which will display on every printable documents and reports.',
+          title: TTexts.titleInstitutionInfo,
+          description: TTexts.titleInstitutionDescription,
         ),
         FeatureCard(
-            icon: Icons.closed_caption_disabled_outlined,
-            title: 'Exam Management',
-            description:
-                'eSkooly has a complete solution for exams management starting from new exam to final result, reports and result cards.'),
+          icon: Icons.closed_caption_disabled_outlined,
+          title: TTexts.titleExamsManagement,
+          description: TTexts.titleExamManagementDescription,
+        ),
         FeatureCard(
           icon: Icons.face,
-          title: 'Attendence System',
-          description:
-              'Our free school software has outstanding online attendance management system for students and staff.',
+          title: TTexts.titleAttendanceSystem,
+          description: TTexts.titleAttendanceSystemDescription,
         ),
       ],
     );

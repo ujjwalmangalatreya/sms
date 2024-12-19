@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/app_fonts.dart';
@@ -102,7 +101,6 @@ class DashboardCard extends StatelessWidget {
                 "3",
                 style: AppFonts.dashboardCardText,
               ),
-
             ],
           ),
         ),

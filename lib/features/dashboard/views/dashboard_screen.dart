@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:schoolmgmt/core/constants/colors.dart';
 import 'package:schoolmgmt/core/constants/images.dart';
 import 'package:schoolmgmt/features/dashboard/views/dashboard_details.dart';
+
 import '../../../core/widgets/common/drawer.dart';
+import '../../auth/controllers/auth_controller.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -13,11 +15,13 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
+  final AuthController authController = AuthController.instance;
 
   final _pages = [
     Center(child: DashboardDetails()),
     Center(child: Text('STUDENTS PAGE')),
     Center(child: Text('EMPLOYEE PAGE')),
+    Center(child: Text('PROFILE PAGE'))
   ];
 
   void updateSelectedIndex(int index) {
@@ -28,6 +32,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   @override
   Widget build(BuildContext context) {
+    final user = authController.authUser;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65),
@@ -52,7 +57,7 @@ class _DashboardPageState extends State<DashboardPage> {
               radius: 25,
               child: Text("UMA"),
             ),
-            Text("test@gmail.com"),
+            Text(user?.email ?? "hello@gmail.com"),
           ],
         ),
       ),
@@ -65,7 +70,6 @@ class _DashboardPageState extends State<DashboardPage> {
           Expanded(child: _pages[_selectedIndex]),
 
           // After Card Section
-
         ],
       ),
     );

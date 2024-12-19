@@ -30,6 +30,7 @@ class TAppRoutes {
         tabletView: TabletLoginPage(),
         webView: WebLoginPage(),
       ),
+      binding: AuthBinding(),
     ),
     /** Dashboard Screen */
     GetPage(

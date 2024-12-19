@@ -8,30 +8,47 @@ class AuthController extends GetxController {
   RxBool isLoading = false.obs;
 
   static AuthController get instance => Get.find();
-  final _auth = FirebaseAuth.instance;
 
-  User? get authUser => _auth.currentUser;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  Rxn<User> firebaseUser = Rxn<User>();
 
-  bool get isAuthenticated => _auth.currentUser != null;
+  User? get authUser => firebaseUser.value;
+
+  bool get isAuthenticated => authUser != null;
 
   @override
   void onReady() {
-    _auth.setPersistence(Persistence.LOCAL);
+    super.onReady();
+    firebaseUser.bindStream(_auth.authStateChanges());
+    ever(firebaseUser, _setInitialRoute);
+  }
+
+  void _setInitialRoute(User? user) {
+    if (user == null) {
+      Get.offAllNamed(TRoutes.home);
+    } else {
+      Get.offAllNamed(TRoutes.dashboard);
+    }
   }
 
   Future<void> login(String email, String password) async {
-    isLoading.value = true;
-    User? result = await _authService.loginUser(email, password);
-    if (result != null) {
-      Get.offAllNamed(TRoutes.dashboard);
-    } else {
-      Get.snackbar("Error", "Invalid credentials");
+    try {
+      isLoading.value = true;
+      User? result = await _authService.loginUser(email, password);
+      if (result != null) {
+        Get.offAllNamed(TRoutes.dashboard);
+      } else {
+        Get.snackbar("Error", "Invalid credentials");
+      }
+    } catch (e) {
+      Get.snackbar("Login Error", e.toString());
+    } finally {
+      isLoading.value = false;
     }
-    isLoading.value = false;
   }
 
   Future<void> logout() async {
-    await _authService.logOutUser();
+    await _auth.signOut();
     Get.offAllNamed(TRoutes.login);
   }
 }

@@ -1,12 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:schoolmgmt/core/constants/app_texts.dart';
 import 'package:schoolmgmt/features/auth/bindings/auth_binding.dart';
 import 'package:schoolmgmt/routes/app_routes.dart';
 import 'package:schoolmgmt/routes/routes.dart';
 import 'package:url_strategy/url_strategy.dart';
+
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -32,9 +33,7 @@ Future<void> main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
   }
-
   //runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
-
   runApp(const MyApp());
 }
 
