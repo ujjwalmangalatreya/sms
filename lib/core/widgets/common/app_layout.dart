@@ -57,7 +57,6 @@ class AppLayout extends StatelessWidget {
           // Main Content
           Expanded(
             child: Obx(() {
-              print("Current Index: ${controller.currentIndex.value}");
               switch (controller.currentIndex.value) {
                 case 0:
                   return DashboardDetails();
@@ -66,7 +65,7 @@ class AppLayout extends StatelessWidget {
                 case 2:
                   return Profile();
                 default:
-                  return Student();
+                  return DashboardDetails();
               }
             }),
           ),
@@ -88,18 +87,15 @@ class SharedDrawer extends StatelessWidget {
         children: [
           DrawerItem(
             title: 'Dashboard',
-            route: '/dashboard',
-            changePageIndex: 0,
+            index: 0,
           ),
           DrawerItem(
             title: 'Profile',
-            route: '/profile',
-            changePageIndex: 1,
+            index: 1,
           ),
           DrawerItem(
             title: 'Students',
-            route: '/students',
-            changePageIndex: 2,
+            index: 2,
           ),
         ],
       ),
@@ -110,28 +106,32 @@ class SharedDrawer extends StatelessWidget {
 class DrawerItem extends StatelessWidget {
   final NavigationController controller = Get.find<NavigationController>();
   final String title;
-  final String route;
-  final int changePageIndex;
+  final int index;
 
   DrawerItem({
     super.key,
     required this.title,
-    required this.route,
-    required this.changePageIndex,
+    required this.index,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        title,
-        style: const TextStyle(color: Colors.red),
-      ),
-      onTap: () {
-        controller.changePage(changePageIndex); // Get.offNamed(route);
-        // Navigator.pop(context);
-        // controller.currentIndex(changePageIndex);
-      },
-    );
+    return Obx(() {
+      final isSelected = controller.currentIndex.value == index;
+      return ListTile(
+        title: Text(
+          title,
+          style: TextStyle(
+            color: isSelected ? Colors.blue : Colors.black,
+            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+          ),
+        ),
+        selected: isSelected,
+        selectedTileColor: Colors.blue[50], // Highlight selected tile
+        onTap: () {
+          controller.changePage(index);
+        },
+      );
+    });
   }
 }
