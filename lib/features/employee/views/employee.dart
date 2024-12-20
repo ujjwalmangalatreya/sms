@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class Profile extends StatelessWidget {
-  const Profile({super.key});
+class Employee extends StatelessWidget {
+  const Employee({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.red,
+          color: Colors.green,
         ),
         child: Center(
-          child: Text("Profile Page Sections..."),
+          child: Text("Employee Page Sections..."),
         ),
       ),
     );

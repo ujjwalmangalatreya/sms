@@ -4,4 +4,6 @@ class TRoutes {
   static const dashboard = '/dashboard';
   static const profile = '/profile';
   static const student = '/students';
+  static const employee = '/employee';
+  static const logout = '/logout';
 }

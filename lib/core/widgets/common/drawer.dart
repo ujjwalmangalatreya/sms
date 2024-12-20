@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmgmt/core/constants/colors.dart';
 
+import '../../../features/auth/controllers/auth_controller.dart';
 import 'drawer_tile.dart';
 
 class DrawerMenu extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int> onMenuSelected;
-  // final AuthController authController = Get.find()<AuthController>();
+  final AuthController authController = Get.find()<AuthController>();
 
   DrawerMenu({
     super.key,
@@ -45,8 +46,10 @@ class DrawerMenu extends StatelessWidget {
           DrawerTile(
             title: 'L O G O U T',
             isSelected: selectedIndex == 4,
-            onTap: () =>
-                {Get.snackbar("LOGGING OUT", "Logging out part is in TODO..")},
+            onTap: () => {
+              //  Get.snackbar("LOGGING OUT", "Logging out part is in TODO.."),
+              authController.logout(),
+            },
           ),
         ],
       ),

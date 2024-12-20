@@ -51,5 +51,11 @@ class TAppRoutes {
       binding: AuthBinding(),
       middlewares: [AuthMiddleware()],
     ),
+    GetPage(
+      name: TRoutes.employee,
+      page: () => AppLayout(),
+      binding: AuthBinding(),
+      middlewares: [AuthMiddleware()],
+    ),
   ];
 }

@@ -10,10 +10,13 @@ class NavigationController extends GetxController {
         Get.offNamed('/dashboard');
         break;
       case 1:
-        Get.offNamed('/profile');
+        Get.offNamed('/students');
         break;
       case 2:
-        Get.offNamed('/students');
+        Get.offNamed('/employee');
+      case 3:
+        Get.offNamed('/profile');
+
         break;
     }
   }
