@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 import 'package:schoolmgmt/core/middlewares/auth_middleware.dart';
+import 'package:schoolmgmt/core/widgets/common/app_layout.dart';
 import 'package:schoolmgmt/core/widgets/responsive/responsive_layout.dart';
 import 'package:schoolmgmt/features/auth/bindings/auth_binding.dart';
 import 'package:schoolmgmt/features/auth/views/mobile_login.dart';
 import 'package:schoolmgmt/features/auth/views/tablet_login.dart';
 import 'package:schoolmgmt/features/auth/views/web_login.dart';
-import 'package:schoolmgmt/features/dashboard/views/dashboard_screen.dart';
 import 'package:schoolmgmt/features/home_screen.dart/mobile_view.dart';
 import 'package:schoolmgmt/features/home_screen.dart/tablet_view.dart';
 import 'package:schoolmgmt/features/home_screen.dart/web_view.dart';
@@ -35,7 +35,19 @@ class TAppRoutes {
     /** Dashboard Screen */
     GetPage(
       name: TRoutes.dashboard,
-      page: () => DashboardPage(),
+      page: () => AppLayout(),
+      binding: AuthBinding(),
+      middlewares: [AuthMiddleware()],
+    ),
+    GetPage(
+      name: TRoutes.profile,
+      page: () => AppLayout(),
+      binding: AuthBinding(),
+      middlewares: [AuthMiddleware()],
+    ),
+    GetPage(
+      name: TRoutes.student,
+      page: () => AppLayout(),
       binding: AuthBinding(),
       middlewares: [AuthMiddleware()],
     ),

@@ -20,16 +20,16 @@ class AuthController extends GetxController {
   void onReady() {
     super.onReady();
     firebaseUser.bindStream(_auth.authStateChanges());
-    ever(firebaseUser, _setInitialRoute);
+    // ever(firebaseUser, _setInitialRoute);
   }
 
-  void _setInitialRoute(User? user) {
-    if (user == null) {
-      Get.offAllNamed(TRoutes.home);
-    } else {
-      Get.offAllNamed(TRoutes.dashboard);
-    }
-  }
+  // void _setInitialRoute(User? user) {
+  //   if (user == null) {
+  //     Get.offAllNamed(TRoutes.home);
+  //   } else {
+  //     Get.offAllNamed(TRoutes.dashboard);
+  //   }
+  // }
 
   Future<void> login(String email, String password) async {
     try {

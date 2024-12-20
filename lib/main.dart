@@ -8,6 +8,7 @@ import 'package:schoolmgmt/routes/app_routes.dart';
 import 'package:schoolmgmt/routes/routes.dart';
 import 'package:url_strategy/url_strategy.dart';
 
+import 'core/controller/navigation_controller.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -33,6 +34,7 @@ Future<void> main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
   }
+
   //runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
   runApp(const MyApp());
 }
@@ -43,7 +45,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Get.put(NavigationController(), permanent: true);
     return GetMaterialApp(
+      defaultTransition: Transition.fade,
+      transitionDuration: const Duration(milliseconds: 1),
       initialBinding: AuthBinding(),
       title: TTexts.appName,
       getPages: TAppRoutes.pages,
