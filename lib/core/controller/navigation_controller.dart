@@ -16,7 +16,7 @@ class NavigationController extends GetxController {
         Get.offNamed('/employee');
       case 3:
         Get.offNamed('/profile');
-
+      case 4:
         break;
     }
   }

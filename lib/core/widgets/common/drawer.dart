@@ -44,13 +44,9 @@ class DrawerMenu extends StatelessWidget {
             onTap: () => {onMenuSelected(3)},
           ),
           DrawerTile(
-            title: 'L O G O U T',
-            isSelected: selectedIndex == 4,
-            onTap: () => {
-              //  Get.snackbar("LOGGING OUT", "Logging out part is in TODO.."),
-              authController.logout(),
-            },
-          ),
+              title: 'L O G O U T',
+              isSelected: selectedIndex == 4,
+              onTap: () => {}),
         ],
       ),
     );

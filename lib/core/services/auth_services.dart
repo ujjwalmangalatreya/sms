@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
-class AuthServices  extends GetxService{
+class AuthServices extends GetxService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
- final  Rx<User?> _user = Rxn<User?>(null);
- Stream<User?> get authStateChanges => _auth.authStateChanges();
+  final Rx<User?> _user = Rxn<User?>(null);
+  Stream<User?> get authStateChanges => _auth.authStateChanges();
   //final DatabaseReference _db = FirebaseDatabase.instance.ref();
 
   //Register a Uase
@@ -27,16 +27,17 @@ class AuthServices  extends GetxService{
   // Log Out
 
   Future<void> logOutUser() async {
-    await _auth.signOut();
+    try {
+      await _auth.signOut();
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
   void onInit() {
     super.onInit();
-    ever(_user, (value) {
-      // Update UI based on user changes
-      print('User state changed: $value');
-    });
+    ever(_user, (value) {});
     _user.bindStream(_auth.authStateChanges());
   }
 }

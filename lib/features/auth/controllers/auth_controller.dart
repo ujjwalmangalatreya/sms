@@ -48,7 +48,7 @@ class AuthController extends GetxController {
   }
 
   Future<void> logout() async {
-    await _auth.signOut();
+    await _authService.logOutUser();
     Get.offAllNamed(TRoutes.login);
   }
 }

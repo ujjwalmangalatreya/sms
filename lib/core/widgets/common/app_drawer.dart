@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:schoolmgmt/core/services/auth_services.dart';
 
 import '../../controller/navigation_controller.dart';
 
@@ -41,6 +42,7 @@ class SharedDrawer extends StatelessWidget {
 
 class DrawerItem extends StatelessWidget {
   final NavigationController controller = Get.find<NavigationController>();
+  final AuthServices authServices = Get.find<AuthServices>();
   final String title;
   final int index;
 
@@ -64,11 +66,18 @@ class DrawerItem extends StatelessWidget {
         ),
         selected: isSelected,
         selectedTileColor: Colors.blue[50], // Highlight selected tile
-        onTap: () {
+        onTap: () async {
           if (index == 4) {
-            Get.snackbar("LOGGING OUT", "TODO LOGGING OUT");
+            try {
+              await authServices.logOutUser(); // Call the logout method
+              Get.offAllNamed('/login'); // Redirect to login page
+              Get.snackbar("LOGOUT SUCCESS", "You have been logged out.");
+            } catch (e) {
+              Get.snackbar("LOGOUT FAILED", "An error occurred: $e");
+            }
+          } else {
+            controller.changePage(index);
           }
-          controller.changePage(index);
         },
       );
     });
