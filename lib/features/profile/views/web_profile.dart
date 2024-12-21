@@ -321,7 +321,6 @@ class Profile extends StatelessWidget {
                                     // UPDATE BUTTON.
                                     ElevatedButton(
                                         onPressed: () {
-                                          print("On Pressed clickec...");
                                           profileController.saveProfileData();
                                         },
                                         child: Text("UPDATE"))
@@ -344,7 +343,7 @@ class Profile extends StatelessWidget {
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        color: Colors.red,
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(16)),
                     child: Padding(
                       padding: EdgeInsets.all(24.0),
@@ -359,7 +358,87 @@ class Profile extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Name"),
+                                    Center(child: CircleAvatar()),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Obx(
+                                      () => Center(
+                                        child: Text(
+                                          profileController.name.value,
+                                          style:
+                                              AppFonts.generalSettingsHeading,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Obx(
+                                      () => Center(
+                                        child: Text(
+                                          profileController.targetLine.value,
+                                          style:
+                                              AppFonts.generalSettingsHeading,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Divider(),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.phone_android),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Obx(() => Text(
+                                            profileController.phone.value)),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.web),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Obx(() => Text(
+                                            profileController.website.value)),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.location_on),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Obx(() => Text(
+                                            profileController.address.value)),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.location_on),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Obx(() => Text(
+                                            profileController.country.value)),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               )

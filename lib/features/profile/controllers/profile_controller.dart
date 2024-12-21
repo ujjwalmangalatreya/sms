@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProfileController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final DatabaseReference _db = FirebaseDatabase.instance.ref();
 
   // Observables
   RxString name = ''.obs;
@@ -42,7 +40,6 @@ class ProfileController extends GetxController {
 
     // Load initial data
     loadProfileData();
-    print("Init Completed...");
   }
 
   @override
@@ -70,12 +67,11 @@ class ProfileController extends GetxController {
 
   // Load profile data from Firebase
   Future<void> loadProfileData() async {
-    print("Loading profile data...");
+    isLoading.value = true;
     try {
       final String? userId = _auth.currentUser?.uid;
 
       if (userId != null) {
-        // Reference to the user's document
         final DocumentReference userDoc =
             FirebaseFirestore.instance.collection('users').doc(userId);
 
@@ -86,8 +82,6 @@ class ProfileController extends GetxController {
         if (docSnapshot.exists) {
           // Convert the document to a map
           final data = docSnapshot.data() as Map<String, dynamic>;
-
-          print("Retrieved profile data: $data");
 
           // Update observable variables
           name.value = data['name'] ?? '';
@@ -105,27 +99,27 @@ class ProfileController extends GetxController {
           addressController.text = address.value;
           countryController.text = country.value;
         } else {
-          print("No profile data found for user $userId.");
+          Get.snackbar("Message",
+              "Your Profile is not complete, please complete the profile.");
         }
       } else {
-        print("No authenticated user found.");
+        Get.snackbar("Error", "You are not authenticated for this page.");
       }
     } catch (e) {
-      print("Error loading profile data: $e");
       Get.snackbar('Error', 'Failed to load profile data: $e',
           backgroundColor: Colors.red, colorText: Colors.white);
     }
+    isLoading.value = false;
   }
 
   // Save profile data to Firebase
   Future<void> saveProfileData() async {
-    print("SAVING PROFILE/...");
     try {
+      isLoading.value = true;
       String? logoUrl;
       // if (logoFilePath.isNotEmpty) {
       //   logoUrl = await uploadLogo(logoFilePath.value);
       // }
-
       final String? userId = _auth.currentUser?.uid;
       final CollectionReference usersCollection =
           FirebaseFirestore.instance.collection('users');
@@ -140,13 +134,12 @@ class ProfileController extends GetxController {
         'logoPath': logoUrl ?? '',
         'updatedAt': FieldValue.serverTimestamp(),
       });
-      print(usersCollection);
-
       Get.snackbar('Success', 'Profile saved successfully!',
           backgroundColor: Colors.green, colorText: Colors.white);
     } catch (e) {
       Get.snackbar('Error', 'Failed to save profile: $e',
           backgroundColor: Colors.red, colorText: Colors.white);
     }
+    isLoading.value = false;
   }
 }
