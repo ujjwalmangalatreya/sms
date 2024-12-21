@@ -5,5 +5,8 @@ class ProfileBinding implements Bindings {
   @override
   void dependencies() {
     Get.put(ProfileController());
+
+    print("Bindings....1");
+    Get.put(ProfileController());
   }
 }
