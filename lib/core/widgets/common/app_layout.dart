@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:schoolmgmt/features/auth/controllers/auth_controller.dart';
 import 'package:schoolmgmt/features/dashboard/views/dashboard_details.dart';
 
 import '../../../features/employee/views/employee.dart';
@@ -12,10 +13,12 @@ import 'app_drawer.dart';
 
 class AppLayout extends StatelessWidget {
   final NavigationController controller = Get.find<NavigationController>();
+
   AppLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final AuthController authController = Get.find<AuthController>();
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
@@ -35,7 +38,7 @@ class AppLayout extends StatelessWidget {
               ),
             ),
           ),
-          actions: const [
+          actions: [
             CircleAvatar(
               radius: 25,
               child: Text("UMA"),
@@ -43,7 +46,10 @@ class AppLayout extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: 8.0),
               child: Center(
-                child: Text("hello@gmail.com"),
+                child: Obx(() {
+                  final user = authController.authUser;
+                  return Text(user?.email ?? "No Email");
+                }),
               ),
             ),
           ],

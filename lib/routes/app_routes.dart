@@ -11,6 +11,8 @@ import 'package:schoolmgmt/features/home_screen.dart/tablet_view.dart';
 import 'package:schoolmgmt/features/home_screen.dart/web_view.dart';
 import 'package:schoolmgmt/routes/routes.dart';
 
+import '../features/profile/bindings/profile_binding.dart';
+
 class TAppRoutes {
   static final List<GetPage> pages = [
     /** Home Screen ***/
@@ -42,7 +44,7 @@ class TAppRoutes {
     GetPage(
       name: TRoutes.profile,
       page: () => AppLayout(),
-      binding: AuthBinding(),
+      bindings: [AuthBinding(), ProfileBinding()],
       middlewares: [AuthMiddleware()],
     ),
     GetPage(

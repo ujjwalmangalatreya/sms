@@ -12,27 +12,36 @@ class SharedDrawer extends StatelessWidget {
     return Drawer(
       elevation: 0, // Remove shadow for web-style sidebar
       child: ListView(
-        padding: EdgeInsets.zero,
+        padding: EdgeInsets.all(8),
         children: [
           DrawerItem(
             title: 'D A S H B O A R D',
             index: 0,
+            icon: Icon(Icons.home),
           ),
           DrawerItem(
             title: 'S T U D E N T S',
             index: 1,
+            icon: Icon(Icons.school),
           ),
           DrawerItem(
             title: 'E M P L O Y E E',
             index: 2,
+            icon: Icon(Icons.people),
           ),
           DrawerItem(
             title: 'P R O F I L E',
             index: 3,
+            icon: Icon(Icons.person),
+          ),
+          Divider(
+            thickness: 0.05,
+            color: Colors.black,
           ),
           DrawerItem(
             title: 'L O G O U T',
             index: 4,
+            icon: Icon(Icons.lock),
           ),
         ],
       ),
@@ -45,11 +54,13 @@ class DrawerItem extends StatelessWidget {
   final AuthServices authServices = Get.find<AuthServices>();
   final String title;
   final int index;
+  final Icon icon;
 
   DrawerItem({
     super.key,
     required this.title,
     required this.index,
+    required this.icon,
   });
 
   @override
@@ -57,15 +68,16 @@ class DrawerItem extends StatelessWidget {
     return Obx(() {
       final isSelected = controller.currentIndex.value == index;
       return ListTile(
+        leading: icon,
         title: Text(
           title,
           style: TextStyle(
-            color: isSelected ? Colors.blue : Colors.black,
-            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+            color: isSelected ? Colors.blue[900] : Colors.black,
+            fontWeight: isSelected ? FontWeight.normal : FontWeight.normal,
           ),
         ),
         selected: isSelected,
-        selectedTileColor: Colors.blue[50], // Highlight selected tile
+        selectedTileColor: Colors.blue[100], // Highlight selected tile
         onTap: () async {
           if (index == 4) {
             try {

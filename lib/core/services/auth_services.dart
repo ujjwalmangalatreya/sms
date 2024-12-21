@@ -7,7 +7,6 @@ class AuthServices extends GetxService {
   Stream<User?> get authStateChanges => _auth.authStateChanges();
   //final DatabaseReference _db = FirebaseDatabase.instance.ref();
 
-  //Register a Uase
   //TODO : Will not register user for now..
 
   // Login user
