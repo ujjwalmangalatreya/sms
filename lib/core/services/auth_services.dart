@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 
-class AuthServices {
+class AuthServices extends GetxService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final Rx<User?> _user = Rxn<User?>(null);
+  Stream<User?> get authStateChanges => _auth.authStateChanges();
   //final DatabaseReference _db = FirebaseDatabase.instance.ref();
 
-  //Register a Uase
   //TODO : Will not register user for now..
 
   // Login user
@@ -25,6 +26,17 @@ class AuthServices {
   // Log Out
 
   Future<void> logOutUser() async {
-    await _auth.signOut();
+    try {
+      await _auth.signOut();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    ever(_user, (value) {});
+    _user.bindStream(_auth.authStateChanges());
   }
 }

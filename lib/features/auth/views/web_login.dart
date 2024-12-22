@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:schoolmgmt/core/constants/colors.dart';
 import 'package:schoolmgmt/core/constants/app_fonts.dart';
+import 'package:schoolmgmt/core/constants/colors.dart';
 import 'package:schoolmgmt/core/constants/images.dart';
 import 'package:schoolmgmt/core/widgets/login_cirular_avatar.dart';
 import 'package:schoolmgmt/features/auth/controllers/auth_controller.dart';
@@ -162,7 +162,7 @@ class _SchoolLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(TImages.schoolLogo);
+    return Image.asset(TImages.statechLogo);
   }
 }
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:schoolmgmt/core/constants/app_fonts.dart';
 import 'package:schoolmgmt/core/constants/app_texts.dart';
 import 'package:schoolmgmt/core/constants/colors.dart';
-import 'package:schoolmgmt/core/constants/app_fonts.dart';
 import 'package:schoolmgmt/core/constants/images.dart';
 import 'package:schoolmgmt/core/utils/clipper.dart';
 import 'package:schoolmgmt/core/widgets/feature_grid.dart';
@@ -15,7 +15,6 @@ class WebHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -29,22 +28,34 @@ class WebHomeScreen extends StatelessWidget {
     );
   }
 
-  AppBar _buildAppBar() {
-    return AppBar(
-      leading: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Image.asset(TImages.schoolLogo),
-      ),
-      backgroundColor: TColors.homePageFirstSection,
-      actions: [
-        Padding(
+  PreferredSize _buildAppBar() {
+    return PreferredSize(
+      preferredSize: Size.fromHeight(65),
+      child: AppBar(
+        leadingWidth: 200,
+        automaticallyImplyLeading: false,
+        leading: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: ElevatedButton(
-            onPressed: () => {Get.toNamed(TRoutes.login)},
-            child: const Text("Login"),
+          child: SizedBox(
+            height: 150,
+            width: 150,
+            child: Image.asset(
+              TImages.statechLogo,
+              fit: BoxFit.contain,
+            ),
           ),
         ),
-      ],
+        backgroundColor: TColors.homePageFirstSection,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              onPressed: () => {Get.toNamed(TRoutes.login)},
+              child: const Text("Login"),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -118,7 +129,9 @@ class _FeatureSection extends StatelessWidget {
                   style: AppFonts.bodyText,
                 ),
                 const SizedBox(height: 30),
-                FeatureGrid(crAxisCount: 4,),
+                FeatureGrid(
+                  crAxisCount: 4,
+                ),
               ],
             ),
           ),
@@ -142,8 +155,7 @@ class _ContactUsSection extends StatelessWidget {
         child: Column(
           children: [
             Text(TTexts.dropUsMessageText, style: AppFonts.homePageTitle),
-            Text(TTexts.askQuestionText,
-                style: AppFonts.bodyText),
+            Text(TTexts.askQuestionText, style: AppFonts.bodyText),
             const SizedBox(height: 20),
             _ContactForm(),
           ],
@@ -234,7 +246,7 @@ class _FooterSection extends StatelessWidget {
             SizedBox(
               height: 170,
               width: 170,
-              child: Image.asset(TImages.schoolLogo),
+              child: Image.asset(TImages.statechLogo),
             ),
             SizedBox(
               child: Text(

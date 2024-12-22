@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppFonts{
+class AppFonts {
   static const TextStyle homePageTitle = TextStyle(
     fontSize: 45,
     color: Colors.white,
@@ -34,6 +34,36 @@ class AppFonts{
     color: Colors.white,
     fontWeight: FontWeight.w500,
     fontSize: 20,
+    fontFamily: 'sms_fonts',
+  );
+  static const TextStyle dashboardCardText = TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.w500,
+    fontSize: 20,
+    fontFamily: 'sms_fonts',
+  );
+  static const TextStyle welcomeNoteHeader = TextStyle(
+    color: Color(0xFFFF808B),
+    fontWeight: FontWeight.w500,
+    fontSize: 20,
+    fontFamily: 'sms_fonts',
+  );
+  static const TextStyle welcomeNoteDetails = TextStyle(
+    color: Color(0xFF777777),
+    fontWeight: FontWeight.w500,
+    fontSize: 13,
+    fontFamily: 'sms_fonts',
+  );
+  static const TextStyle generalSettingsHeading = TextStyle(
+    color: Colors.black45,
+    fontWeight: FontWeight.w500,
+    fontSize: 20,
+    fontFamily: 'sms_fonts',
+  );
+  static const TextStyle updateProfileHeader = TextStyle(
+    color: Colors.black45,
+    fontWeight: FontWeight.bold,
+    fontSize: 30,
     fontFamily: 'sms_fonts',
   );
 }
