@@ -66,4 +66,10 @@ class AppFonts {
     fontSize: 30,
     fontFamily: 'sms_fonts',
   );
+  static const TextStyle tabHeader = TextStyle(
+    color: Colors.black45,
+    fontWeight: FontWeight.bold,
+    fontSize: 15,
+    fontFamily: 'sms_fonts',
+  );
 }
