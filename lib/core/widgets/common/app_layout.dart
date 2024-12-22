@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:schoolmgmt/features/auth/controllers/auth_controller.dart';
 import 'package:schoolmgmt/features/dashboard/views/dashboard_details.dart';
 
-import '../../../features/employee/views/employee.dart';
+import '../../../features/employee/views/employee_layout.dart';
 import '../../../features/profile/views/web_profile.dart';
 import '../../../features/student/views/student.dart';
 import '../../constants/colors.dart';
