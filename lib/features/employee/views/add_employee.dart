@@ -71,7 +71,365 @@ class AddEmployee extends StatelessWidget {
           ),
         ),
         // OTHER CONTENT
+        Center(
+          child: Text(
+            "Employee Form",
+            style: AppFonts.updateProfileHeader,
+          ),
+        ),
+        /**Basic Information */
+        SizedBox(
+          height: 10,
+        ),
+        Center(
+          child: Text(
+            "Basic Information",
+            style: AppFonts.tabHeader,
+          ),
+        ),
+        Divider(),
+        //OTHER INFORMATION FORM
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.all(10.0),
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(16)),
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Stack(
+                            children: [
+                              // Main Container
+                              Container(
+                                height: 60,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  border: Border.all(
+                                    color: Colors.blueAccent, // Border color
+                                    width: 1.0, // Border thickness
+                                  ),
+                                ),
+                                child: profileTextField(),
+                              ),
+                              positionedText("Employee Name *"),
+                            ],
+                          ),
+                          Stack(
+                            children: [
+                              // Main Container
+                              Container(
+                                height: 60,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  border: Border.all(
+                                    color: Colors.blueAccent, // Border color
+                                    width: 1.0, // Border thickness
+                                  ),
+                                ),
+                                child: profileTextField(),
+                              ),
+                              positionedText("Mobile Number *"),
+                            ],
+                          ),
+                          Stack(
+                            children: [
+                              // Main Container
+                              Container(
+                                height: 60,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  border: Border.all(
+                                    color: Colors.blueAccent, // Border color
+                                    width: 1.0, // Border thickness
+                                  ),
+                                ),
+                                child: profileTextField(),
+                              ),
+                              positionedText("Employee Role *"),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Stack(
+                            children: [
+                              // Main Container
+                              Container(
+                                height: 60,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  border: Border.all(
+                                    color: Colors.blueAccent, // Border color
+                                    width: 1.0, // Border thickness
+                                  ),
+                                ),
+                                child: profileTextField(),
+                              ),
+                              positionedText("Choose Picture *"),
+                            ],
+                          ),
+                          Stack(
+                            children: [
+                              // Main Container
+                              Container(
+                                height: 60,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  border: Border.all(
+                                    color: Colors.blueAccent, // Border color
+                                    width: 1.0, // Border thickness
+                                  ),
+                                ),
+                                child: profileTextField(),
+                              ),
+                              positionedText("Date of Joining *"),
+                            ],
+                          ),
+                          Stack(
+                            children: [
+                              // Main Container
+                              Container(
+                                height: 60,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  border: Border.all(
+                                    color: Colors.blueAccent, // Border color
+                                    width: 1.0, // Border thickness
+                                  ),
+                                ),
+                                child: profileTextField(),
+                              ),
+                              positionedText("Monthly Salary*"),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+        Center(
+          child: Text(
+            "Other Information",
+            style: AppFonts.tabHeader,
+          ),
+        ),
+        Divider(),
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.all(10.0),
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(12)),
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Stack(
+                            children: [
+                              // Main Container
+                              Container(
+                                height: 60,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                    color: Colors.blueAccent, // Border color
+                                    width: 1.0, // Border thickness
+                                  ),
+                                ),
+                                child: profileTextField(),
+                              ),
+                              positionedText("Father/Husband Name *"),
+                            ],
+                          ),
+                          Stack(
+                            children: [
+                              // Main Container
+                              Container(
+                                height: 60,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  border: Border.all(
+                                    color: Colors.blueAccent, // Border color
+                                    width: 1.0, // Border thickness
+                                  ),
+                                ),
+                                child: profileTextField(),
+                              ),
+                              positionedText("Gender *"),
+                            ],
+                          ),
+                          Stack(
+                            children: [
+                              // Main Container
+                              Container(
+                                height: 60,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  border: Border.all(
+                                    color: Colors.blueAccent, // Border color
+                                    width: 1.0, // Border thickness
+                                  ),
+                                ),
+                                child: profileTextField(),
+                              ),
+                              positionedText("National Id *"),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Stack(
+                            children: [
+                              // Main Container
+                              Container(
+                                height: 60,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  border: Border.all(
+                                    color: Colors.blueAccent, // Border color
+                                    width: 1.0, // Border thickness
+                                  ),
+                                ),
+                                child: profileTextField(),
+                              ),
+                              positionedText("Montly Salary"),
+                            ],
+                          ),
+                          Stack(
+                            children: [
+                              // Main Container
+                              Container(
+                                height: 60,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  border: Border.all(
+                                    color: Colors.blueAccent, // Border color
+                                    width: 1.0, // Border thickness
+                                  ),
+                                ),
+                                child: profileTextField(),
+                              ),
+                              positionedText("Father/Husband Name"),
+                            ],
+                          ),
+                          Stack(
+                            children: [
+                              // Main Container
+                              Container(
+                                height: 60,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  border: Border.all(
+                                    color: Colors.blueAccent, // Border color
+                                    width: 1.0, // Border thickness
+                                  ),
+                                ),
+                                child: profileTextField(),
+                              ),
+                              positionedText("Gender "),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+        Divider(),
+
+        Center(
+          child: ElevatedButton(onPressed: () {}, child: Text("Create")),
+        ),
       ],
     );
   }
+}
+
+Widget positionedText(String positionedText) {
+  return Positioned(
+    left: 20.0, // Adjust as needed
+    top: 0.0, // Adjust as needed
+    child: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
+      decoration: BoxDecoration(
+        // color: Colors.blue, // Background color
+        border: Border.all(
+          color: Colors.white, // Border color
+          width: 0.5, // Border width
+        ),
+        borderRadius: BorderRadius.circular(3.0), // Optional: Rounded corners
+      ), // Background for better visibility
+      child: Text(
+        positionedText,
+        style: TextStyle(
+          fontSize: 10.0,
+          color: Colors.blue,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
+  );
+}
+
+Widget profileTextField() {
+  return TextFormField(
+    decoration: InputDecoration(
+      // filled: true,
+      fillColor: Colors.white,
+      contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 28.0),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20.0),
+        borderSide: BorderSide(color: Colors.grey.shade200),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20.0),
+        borderSide: BorderSide(color: Colors.grey.shade200),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20.0),
+        borderSide: BorderSide(color: Colors.grey.shade400),
+      ),
+    ),
+  );
 }
