@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmgmt/features/auth/controllers/auth_controller.dart';
 import 'package:schoolmgmt/features/dashboard/views/dashboard_details.dart';
+import 'package:schoolmgmt/features/employee/views/employee_layout.dart';
+import 'package:schoolmgmt/features/student/views/student_layout.dart';
 
-import '../../../features/employee/views/employee_layout.dart';
 import '../../../features/profile/views/web_profile.dart';
-import '../../../features/student/views/student.dart';
 import '../../constants/colors.dart';
 import '../../constants/images.dart';
 import '../../controller/navigation_controller.dart';
@@ -69,7 +69,7 @@ class AppLayout extends StatelessWidget {
                 case 0:
                   return DashboardDetails();
                 case 1:
-                  return Student();
+                  return StudentLayout();
                 case 2:
                   return Employee();
                 case 3:
