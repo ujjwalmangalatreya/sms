@@ -24,9 +24,7 @@ class _DashboardDetailsState extends State<DashboardDetails> {
         children: [
           // Dashboard Grid Section
           const DashboardGrid(),
-
           const SizedBox(height: 20.0), // Spacing between sections
-
           // Row with Two Columns
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +79,7 @@ class _DashboardDetailsState extends State<DashboardDetails> {
                 ),
               ),
 
-              // Second Column
+              // Second ColumnS
               Flexible(
                 flex: 1, // Adjust column size ratio
                 child: Padding(

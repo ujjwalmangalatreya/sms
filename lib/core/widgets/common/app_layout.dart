@@ -24,17 +24,19 @@ class AppLayout extends StatelessWidget {
         preferredSize: const Size.fromHeight(65),
         child: AppBar(
           backgroundColor: TColors.dashboardAppBar,
-          title: const Text('Dashboard'),
           leadingWidth: 300,
           automaticallyImplyLeading: false,
           leading: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SizedBox(
-              width: 140,
-              height: 140,
-              child: Image.asset(
-                TImages.statechLogo,
-                fit: BoxFit.contain,
+            padding: const EdgeInsets.all(5.0),
+            child: FittedBox(
+              fit: BoxFit.cover,
+              child: SizedBox(
+                width: 140,
+                height: 140,
+                child: Image.asset(
+                  TImages.statechLogo,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
           ),

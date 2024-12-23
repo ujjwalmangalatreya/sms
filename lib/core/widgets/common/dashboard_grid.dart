@@ -83,25 +83,33 @@ class DashboardCard extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                icon,
-                size: 30.0,
-                color: TColors.appPrimaryColor,
-              ),
-              const SizedBox(height: 5.0),
-              Text(
-                title,
-                style: AppFonts.dashboardCardText,
-              ),
-              const SizedBox(height: 5.0),
-              Text(
-                "3",
-                style: AppFonts.dashboardCardText,
-              ),
-            ],
+          child: Flexible(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Icon(
+                    icon,
+                    size: 30.0,
+                    color: TColors.appPrimaryColor,
+                  ),
+                ),
+                const SizedBox(height: 5.0),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: AppFonts.dashboardCardText,
+                  ),
+                ),
+                const SizedBox(height: 5.0),
+                Expanded(
+                  child: Text(
+                    "3",
+                    style: AppFonts.dashboardCardText,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
