@@ -79,7 +79,7 @@ class _DashboardDetailsState extends State<DashboardDetails> {
                 ),
               ),
 
-              // Second Column
+              // Second ColumnS
               Flexible(
                 flex: 1, // Adjust column size ratio
                 child: Padding(
