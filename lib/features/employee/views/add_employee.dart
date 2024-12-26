@@ -411,6 +411,7 @@ class AddEmployee extends StatelessWidget {
           child: ElevatedButton(
               onPressed: () {
                 employeeController.saveEmployeeData();
+                employeeController.clearAllFields();
               },
               child: Text("Create")),
         ),

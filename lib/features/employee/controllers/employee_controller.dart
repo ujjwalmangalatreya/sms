@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class EmployeeController extends GetxController {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  
 
   RxString employeeName = ''.obs;
   RxString mobileNumber = ''.obs;
@@ -71,6 +70,20 @@ class EmployeeController extends GetxController {
     employeeRoleController.dispose();
     mobileNumberController.dispose();
     choosePictireController.dispose();
+  }
+  void clearAllFields() {
+    employeeNameController.clear();
+    mobileNumberController.clear();
+    employeeRoleController.clear();
+    choosePictireController.clear();
+    dateOfJoiningController.clear();
+    monthlySalaryController.clear();
+    fatherHusbandNameController.clear();
+    genderController.clear();
+    nationalIdController.clear();
+    emailAddressController.clear();
+    educationController.clear();
+    homeAddressController.clear();
   }
 
   void _setupListners() {
