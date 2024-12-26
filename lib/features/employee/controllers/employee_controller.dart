@@ -17,6 +17,7 @@ class EmployeeController extends GetxController {
   RxString emailAddress = ''.obs;
   RxString education = ''.obs;
   RxString homeAddress = ''.obs;
+  RxString choosePicture = ''.obs;
 
   RxBool isLoading = true.obs;
 
@@ -31,9 +32,10 @@ class EmployeeController extends GetxController {
   late TextEditingController emailAddressController;
   late TextEditingController educationController;
   late TextEditingController homeAddressController;
+  late TextEditingController choosePictireController;
 
   @override
-  void init() {
+  void onInit() {
     super.onInit();
     employeeNameController = TextEditingController();
     mobileNumberController = TextEditingController();
@@ -46,6 +48,7 @@ class EmployeeController extends GetxController {
     emailAddressController = TextEditingController();
     educationController = TextEditingController();
     homeAddressController = TextEditingController();
+    choosePictireController = TextEditingController();
 
     _setupListners();
 
@@ -67,24 +70,36 @@ class EmployeeController extends GetxController {
     employeeNameController.dispose();
     employeeRoleController.dispose();
     mobileNumberController.dispose();
+    choosePictireController.dispose();
   }
 
   void _setupListners() {
-    employeeNameController.addListener(() => employeeName.value = employeeNameController.text);
-    mobileNumberController.addListener(() => mobileNumber.value = mobileNumberController.text);
-    employeeRoleController.addListener(() => employeeRole.value = employeeRoleController.text);
-    dateOfJoiningController.addListener(() => dateOfJoining.value = dateOfJoiningController.text);
-    monthlySalaryController.addListener(() => monthlySalary.value = monthlySalaryController.text);
-    fatherHusbandNameController.addListener(() => fatherHusbandName.value = fatherHusbandNameController.text);
+    employeeNameController
+        .addListener(() => employeeName.value = employeeNameController.text);
+    mobileNumberController
+        .addListener(() => mobileNumber.value = mobileNumberController.text);
+    employeeRoleController
+        .addListener(() => employeeRole.value = employeeRoleController.text);
+    dateOfJoiningController
+        .addListener(() => dateOfJoining.value = dateOfJoiningController.text);
+    monthlySalaryController
+        .addListener(() => monthlySalary.value = monthlySalaryController.text);
+    fatherHusbandNameController.addListener(
+        () => fatherHusbandName.value = fatherHusbandNameController.text);
     genderController.addListener(() => gender.value = genderController.text);
-    nationalIdController.addListener(() => nationalId.value = nationalIdController.text);
-    emailAddressController.addListener(() => emailAddress.value = emailAddressController.text);
-    educationController.addListener(() => education.value = educationController.text);
-    homeAddressController.addListener(() => homeAddress.value = homeAddressController.text);
+    nationalIdController
+        .addListener(() => nationalId.value = nationalIdController.text);
+    emailAddressController
+        .addListener(() => emailAddress.value = emailAddressController.text);
+    educationController
+        .addListener(() => education.value = educationController.text);
+    homeAddressController
+        .addListener(() => homeAddress.value = homeAddressController.text);
+        choosePictireController
+         .addListener(() => choosePicture.value = choosePictireController.text);
   }
 
-
-Future<void> saveEmployeeData() async {
+  Future<void> saveEmployeeData() async {
     try {
       isLoading.value = true;
 
@@ -123,7 +138,4 @@ Future<void> saveEmployeeData() async {
       isLoading.value = false;
     }
   }
-
-
-
 }

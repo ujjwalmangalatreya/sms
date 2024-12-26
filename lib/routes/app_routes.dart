@@ -6,6 +6,7 @@ import 'package:schoolmgmt/features/auth/bindings/auth_binding.dart';
 import 'package:schoolmgmt/features/auth/views/mobile_login.dart';
 import 'package:schoolmgmt/features/auth/views/tablet_login.dart';
 import 'package:schoolmgmt/features/auth/views/web_login.dart';
+import 'package:schoolmgmt/features/employee/binding/employee_binding.dart';
 import 'package:schoolmgmt/features/home_screen.dart/mobile_view.dart';
 import 'package:schoolmgmt/features/home_screen.dart/tablet_view.dart';
 import 'package:schoolmgmt/features/home_screen.dart/web_view.dart';
@@ -56,7 +57,7 @@ class TAppRoutes {
     GetPage(
       name: TRoutes.employee,
       page: () => AppLayout(),
-      binding: AuthBinding(),
+      bindings: [AuthBinding(), EmployeeBinding()],
       middlewares: [AuthMiddleware()],
     ),
   ];
