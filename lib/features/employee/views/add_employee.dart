@@ -9,7 +9,8 @@ class AddEmployee extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final EmployeeController employeeController = Get.find<EmployeeController>();
+    final EmployeeController employeeController =
+        Get.find<EmployeeController>();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +122,9 @@ class AddEmployee extends StatelessWidget {
                                     width: 1.0, // Border thickness
                                   ),
                                 ),
-                                child: profileTextField(controller: employeeController.employeeNameController),
+                                child: profileTextField(
+                                    controller: employeeController
+                                        .employeeNameController),
                               ),
                               positionedText("Employee Name *"),
                             ],
@@ -139,7 +142,9 @@ class AddEmployee extends StatelessWidget {
                                     width: 1.0, // Border thickness
                                   ),
                                 ),
-                                child: profileTextField(controller: employeeController.mobileNumberController),
+                                child: profileTextField(
+                                    controller: employeeController
+                                        .mobileNumberController),
                               ),
                               positionedText("Mobile Number *"),
                             ],
@@ -157,7 +162,9 @@ class AddEmployee extends StatelessWidget {
                                     width: 1.0, // Border thickness
                                   ),
                                 ),
-                                child: profileTextField(controller: employeeController.employeeRoleController),
+                                child: profileTextField(
+                                    controller: employeeController
+                                        .employeeRoleController),
                               ),
                               positionedText("Employee Role *"),
                             ],
@@ -183,7 +190,9 @@ class AddEmployee extends StatelessWidget {
                                     width: 1.0, // Border thickness
                                   ),
                                 ),
-                                child: profileTextField(controller:employeeController.choosePictireController),
+                                child: profileTextField(
+                                    controller: employeeController
+                                        .choosePictireController),
                               ),
                               positionedText("Choose Picture *"),
                             ],
@@ -201,7 +210,9 @@ class AddEmployee extends StatelessWidget {
                                     width: 1.0, // Border thickness
                                   ),
                                 ),
-                                child: profileTextField(controller: employeeController.dateOfJoiningController),
+                                child: profileTextField(
+                                    controller: employeeController
+                                        .dateOfJoiningController),
                               ),
                               positionedText("Date of Joining *"),
                             ],
@@ -219,7 +230,9 @@ class AddEmployee extends StatelessWidget {
                                     width: 1.0, // Border thickness
                                   ),
                                 ),
-                                child: profileTextField(controller: employeeController.monthlySalaryController),
+                                child: profileTextField(
+                                    controller: employeeController
+                                        .monthlySalaryController),
                               ),
                               positionedText("Monthly Salary*"),
                             ],
@@ -268,7 +281,9 @@ class AddEmployee extends StatelessWidget {
                                     width: 1.0, // Border thickness
                                   ),
                                 ),
-                                child: profileTextField(controller: employeeController.fatherHusbandNameController),
+                                child: profileTextField(
+                                    controller: employeeController
+                                        .fatherHusbandNameController),
                               ),
                               positionedText("Father/Husband Name *"),
                             ],
@@ -286,7 +301,9 @@ class AddEmployee extends StatelessWidget {
                                     width: 1.0, // Border thickness
                                   ),
                                 ),
-                                child: profileTextField(controller: employeeController.genderController),
+                                child: profileTextField(
+                                    controller:
+                                        employeeController.genderController),
                               ),
                               positionedText("Gender *"),
                             ],
@@ -304,7 +321,9 @@ class AddEmployee extends StatelessWidget {
                                     width: 1.0, // Border thickness
                                   ),
                                 ),
-                                child: profileTextField(controller: employeeController.nationalIdController),
+                                child: profileTextField(
+                                    controller: employeeController
+                                        .nationalIdController),
                               ),
                               positionedText("National Id *"),
                             ],
@@ -330,7 +349,9 @@ class AddEmployee extends StatelessWidget {
                                     width: 1.0, // Border thickness
                                   ),
                                 ),
-                                child: profileTextField(controller: employeeController.emailAddressController),
+                                child: profileTextField(
+                                    controller: employeeController
+                                        .emailAddressController),
                               ),
                               positionedText("Email Address *"),
                             ],
@@ -348,7 +369,9 @@ class AddEmployee extends StatelessWidget {
                                     width: 1.0, // Border thickness
                                   ),
                                 ),
-                                child: profileTextField(controller: employeeController.educationController),
+                                child: profileTextField(
+                                    controller:
+                                        employeeController.educationController),
                               ),
                               positionedText("Education *"),
                             ],
@@ -366,7 +389,9 @@ class AddEmployee extends StatelessWidget {
                                     width: 1.0, // Border thickness
                                   ),
                                 ),
-                                child: profileTextField(controller: employeeController.homeAddressController),
+                                child: profileTextField(
+                                    controller: employeeController
+                                        .homeAddressController),
                               ),
                               positionedText("Home Address "),
                             ],
@@ -383,9 +408,11 @@ class AddEmployee extends StatelessWidget {
         Divider(),
 
         Center(
-          child: ElevatedButton(onPressed: () {
-            employeeController.saveEmployeeData();
-          }, child: Text("Create")),
+          child: ElevatedButton(
+              onPressed: () {
+                employeeController.saveEmployeeData();
+              },
+              child: Text("Create")),
         ),
       ],
     );
@@ -418,7 +445,9 @@ Widget positionedText(String positionedText) {
   );
 }
 
-Widget profileTextField({required TextEditingController controller,}) {
+Widget profileTextField({
+  required TextEditingController controller,
+}) {
   return TextFormField(
     controller: controller,
     decoration: InputDecoration(

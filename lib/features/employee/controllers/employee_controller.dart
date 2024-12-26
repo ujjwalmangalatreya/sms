@@ -103,18 +103,10 @@ class EmployeeController extends GetxController {
     try {
       isLoading.value = true;
 
-      final String? userId = _auth.currentUser?.uid;
-      if (userId == null) {
-        Get.snackbar('Error', 'User is not authenticated.',
-            backgroundColor: Colors.red, colorText: Colors.white);
-        isLoading.value = false;
-        return;
-      }
-
       final CollectionReference employeesCollection =
           FirebaseFirestore.instance.collection('employees');
 
-      await employeesCollection.doc(userId).set({
+      await employeesCollection.doc().set({
         'employeeName': employeeName.value,
         'mobileNumber': mobileNumber.value,
         'employeeRole': employeeRole.value,
