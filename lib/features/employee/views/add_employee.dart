@@ -328,7 +328,7 @@ class AddEmployee extends StatelessWidget {
                                 ),
                                 child: profileTextField(),
                               ),
-                              positionedText("Montly Salary"),
+                              positionedText("Email Address *"),
                             ],
                           ),
                           Stack(
@@ -346,7 +346,7 @@ class AddEmployee extends StatelessWidget {
                                 ),
                                 child: profileTextField(),
                               ),
-                              positionedText("Father/Husband Name"),
+                              positionedText("Education *"),
                             ],
                           ),
                           Stack(
@@ -364,7 +364,7 @@ class AddEmployee extends StatelessWidget {
                                 ),
                                 child: profileTextField(),
                               ),
-                              positionedText("Gender "),
+                              positionedText("Home Address "),
                             ],
                           ),
                         ],
