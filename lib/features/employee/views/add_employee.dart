@@ -195,9 +195,9 @@ class AddEmployee extends StatelessWidget {
                                 ),
                                 child: profileTextField(
                                     controller: employeeController
-                                        .choosePictireController,
+                                        .choosePictureController,
                                     choosePictureController: employeeController
-                                        .choosePictireController),
+                                        .choosePictureController),
                               ),
                               positionedText("Choose Picture *"),
                             ],
@@ -217,7 +217,8 @@ class AddEmployee extends StatelessWidget {
                                 ),
                                 child: profileTextField(
                                     controller: employeeController
-                                        .dateOfJoiningController),
+                                        .dateOfJoiningController,
+                                        chooseDateController: employeeController.dateOfJoiningController),
                               ),
                               positionedText("Date of Joining *"),
                             ],
@@ -454,12 +455,15 @@ Widget positionedText(String positionedText) {
 Widget profileTextField({
   required TextEditingController controller,
   TextEditingController? choosePictureController,
+  TextEditingController? chooseDateController,
 }) {
   final isChoosePicture = choosePictureController == controller;
+  final isChooseDate = chooseDateController == controller;
+
   return TextFormField(
     controller: controller,
+    readOnly: isChooseDate, // Disable manual input for date picker
     decoration: InputDecoration(
-      // filled: true,
       fillColor: Colors.white,
       contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 28.0),
       border: OutlineInputBorder(
@@ -477,22 +481,20 @@ Widget profileTextField({
       suffixIcon: isChoosePicture
           ? IconButton(
               onPressed: () async {
+                // File picker logic
                 FilePickerResult? result =
                     await FilePicker.platform.pickFiles();
                 if (result != null) {
                   if (kIsWeb) {
-                    // Web: Use `bytes` and `name`
                     Uint8List fileBytes = result.files.single.bytes!;
                     String fileName = result.files.single.name;
 
                     // Display file name in the text field
                     controller.text = fileName;
 
-                    // Debug: Check file details
                     debugPrint(
                         "File selected (Web): $fileName, ${fileBytes.length} bytes");
                   } else {
-                    // Non-web platforms: Use `path`
                     String? filePath = result.files.single.path;
                     if (filePath != null) {
                       controller.text = filePath;
@@ -507,7 +509,30 @@ Widget profileTextField({
               icon: Icon(Icons.upload_file),
               color: Colors.red.shade600,
             )
-          : null,
+          : isChooseDate
+              ? IconButton(
+                  onPressed: () async {
+                    // Show date picker
+                    DateTime? selectedDate = await showDatePicker(
+                      context: Get.context!,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                    );
+                    if (selectedDate != null) {
+                      // Format and display the selected date
+                      controller.text =
+                          "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}";
+                    } else {
+                      debugPrint("Date picking canceled");
+                    }
+                  },
+                  icon: Icon(Icons.calendar_today),
+                  color: Colors.blue.shade600,
+                )
+              : null,
     ),
   );
 }
+
+
