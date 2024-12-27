@@ -1,3 +1,6 @@
+import 'dart:typed_data';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmgmt/features/employee/controllers/employee_controller.dart';
@@ -192,6 +195,8 @@ class AddEmployee extends StatelessWidget {
                                 ),
                                 child: profileTextField(
                                     controller: employeeController
+                                        .choosePictireController,
+                                    choosePictureController: employeeController
                                         .choosePictireController),
                               ),
                               positionedText("Choose Picture *"),
@@ -448,7 +453,9 @@ Widget positionedText(String positionedText) {
 
 Widget profileTextField({
   required TextEditingController controller,
+  TextEditingController? choosePictureController,
 }) {
+  final isChoosePicture = choosePictureController == controller;
   return TextFormField(
     controller: controller,
     decoration: InputDecoration(
@@ -467,6 +474,33 @@ Widget profileTextField({
         borderRadius: BorderRadius.circular(20.0),
         borderSide: BorderSide(color: Colors.grey.shade400),
       ),
+      suffixIcon: isChoosePicture
+          ? IconButton(
+              onPressed: () async {
+                FilePickerResult? result =
+                    await FilePicker.platform.pickFiles();
+                if (result != null) {
+                  if (result.files.single.path != null) {
+                    // Non-web platforms: Use the file path
+                    controller.text = result.files.single.path!;
+                  } else {
+                    // Web: Use the bytes property
+                    Uint8List fileBytes = result.files.single.bytes!;
+                    String fileName = result.files.single.name;
+
+                    // Optionally, upload the bytes to your server or display the filename
+                    controller.text = fileName;
+
+                    // Example of how to use the bytes:
+                    print(
+                        "File picked: $fileName with ${fileBytes.length} bytes");
+                  }
+                } 
+              },
+              icon: Icon(Icons.upload_file),
+              color: Colors.red.shade600,
+            )
+          : null,
     ),
   );
 }
