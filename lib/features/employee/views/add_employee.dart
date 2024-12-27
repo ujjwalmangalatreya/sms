@@ -4,7 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmgmt/features/employee/controllers/employee_controller.dart';
-
+import 'package:flutter/foundation.dart';
 import '../../../core/constants/app_fonts.dart';
 
 class AddEmployee extends StatelessWidget {
@@ -480,22 +480,29 @@ Widget profileTextField({
                 FilePickerResult? result =
                     await FilePicker.platform.pickFiles();
                 if (result != null) {
-                  if (result.files.single.path != null) {
-                    // Non-web platforms: Use the file path
-                    controller.text = result.files.single.path!;
-                  } else {
-                    // Web: Use the bytes property
+                  if (kIsWeb) {
+                    // Web: Use `bytes` and `name`
                     Uint8List fileBytes = result.files.single.bytes!;
                     String fileName = result.files.single.name;
 
-                    // Optionally, upload the bytes to your server or display the filename
+                    // Display file name in the text field
                     controller.text = fileName;
 
-                    // Example of how to use the bytes:
-                    print(
-                        "File picked: $fileName with ${fileBytes.length} bytes");
+                    // Debug: Check file details
+                    debugPrint(
+                        "File selected (Web): $fileName, ${fileBytes.length} bytes");
+                  } else {
+                    // Non-web platforms: Use `path`
+                    String? filePath = result.files.single.path;
+                    if (filePath != null) {
+                      controller.text = filePath;
+                    } else {
+                      debugPrint("File path is null on non-web platform");
+                    }
                   }
-                } 
+                } else {
+                  debugPrint("File picking canceled");
+                }
               },
               icon: Icon(Icons.upload_file),
               color: Colors.red.shade600,
