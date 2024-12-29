@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:schoolmgmt/features/employee/controllers/employee_controller.dart';
 
 import '../../../core/constants/app_fonts.dart';
 import '../../profile/views/web_profile.dart';
 
 class AllEmployee extends StatelessWidget {
-  const AllEmployee({super.key});
+  AllEmployee({super.key});
+
+  final EmployeeController employeeController = Get.find<EmployeeController>();
 
   @override
   Widget build(BuildContext context) {
+    employeeController.getAllEmployees();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -101,7 +105,7 @@ class AllEmployee extends StatelessWidget {
         //Employee Card.
         Padding(
           padding: const EdgeInsets.fromLTRB(30.0, 10, 0, 0),
-          child: employeeCard(employees),
+          child: employeeCard(employeeController.employees),
         ),
       ],
     );
@@ -246,25 +250,25 @@ Widget employeeCard(List<Map<String, dynamic>> employees) {
   );
 }
 
-List<Map<String, dynamic>> employees = [
-  {
-    "photoUrl":
-        "https://t4.ftcdn.net/jpg/03/78/43/25/360_F_378432516_6IlKiCLDAqSCGcfc6o8VqWhND51XqfFm.jpg",
-    "name": "Ram Narayan Shrestha",
-  },
-  {
-    "photoUrl":
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTefdAYZ6uy2rn4ODl9zSL1KwCAhiEPo9Xm-g&s",
-    "name": "Asmita Bhandari",
-  },
-  {
-    "photoUrl":
-        "https://c8.alamy.com/comp/2AKFTT6/passport-photo-of-african-american-mature-adult-man-isolated-on-white-background-for-cut-out-2AKFTT6.jpg",
-    "name": "Asmita Bhandari",
-  },
-  {
-    "photoUrl":
-        "https://www.shutterstock.com/image-photo/portrait-real-black-african-man-260nw-504738538.jpg",
-    "name": "Asmita Bhandari",
-  },
-];
+// List<Map<String, dynamic>> employees = [
+//   {
+//     "photoUrl":
+//         "https://t4.ftcdn.net/jpg/03/78/43/25/360_F_378432516_6IlKiCLDAqSCGcfc6o8VqWhND51XqfFm.jpg",
+//     "name": "Ram Narayan Shrestha",
+//   },
+//   {
+//     "photoUrl":
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTefdAYZ6uy2rn4ODl9zSL1KwCAhiEPo9Xm-g&s",
+//     "name": "Asmita Bhandari",
+//   },
+//   {
+//     "photoUrl":
+//         "https://c8.alamy.com/comp/2AKFTT6/passport-photo-of-african-american-mature-adult-man-isolated-on-white-background-for-cut-out-2AKFTT6.jpg",
+//     "name": "Asmita Bhandari",
+//   },
+//   {
+//     "photoUrl":
+//         "https://www.shutterstock.com/image-photo/portrait-real-black-african-man-260nw-504738538.jpg",
+//     "name": "Asmita Bhandari",
+//   },
+// ];

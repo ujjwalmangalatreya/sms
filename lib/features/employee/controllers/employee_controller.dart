@@ -19,6 +19,8 @@ class EmployeeController extends GetxController {
 
   RxBool isLoading = true.obs;
 
+  final RxList<Map<String, dynamic>> employees = <Map<String, dynamic>>[].obs;
+
   // TextEditingControllers
   late TextEditingController employeeNameController;
   late TextEditingController mobileNumberController;
@@ -151,6 +153,19 @@ class EmployeeController extends GetxController {
           backgroundColor: Colors.red, colorText: Colors.white);
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  Future<void> getAllEmployees() async {
+    try {
+      CollectionReference employeeCollection =
+          FirebaseFirestore.instance.collection('employees');
+      QuerySnapshot querySnapshot = await employeeCollection.get();
+      employees.value = querySnapshot.docs
+          .map((doc) => doc.data() as Map<String, dynamic>)
+          .toList();
+    } catch (e) {
+      Get.snackbar("Error", "Failed to fetch employees: $e");
     }
   }
 }
