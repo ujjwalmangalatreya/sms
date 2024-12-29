@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class EmployeeController extends GetxController {
-  
-
+  // Observable variables
   RxString employeeName = ''.obs;
   RxString mobileNumber = ''.obs;
   RxString employeeRole = ''.obs;
@@ -20,6 +19,9 @@ class EmployeeController extends GetxController {
 
   RxBool isLoading = true.obs;
 
+  final RxList<Map<String, dynamic>> employees = <Map<String, dynamic>>[].obs;
+
+  // TextEditingControllers
   late TextEditingController employeeNameController;
   late TextEditingController mobileNumberController;
   late TextEditingController employeeRoleController;
@@ -31,11 +33,13 @@ class EmployeeController extends GetxController {
   late TextEditingController emailAddressController;
   late TextEditingController educationController;
   late TextEditingController homeAddressController;
-  late TextEditingController choosePictireController;
+  late TextEditingController choosePictureController;
 
   @override
   void onInit() {
     super.onInit();
+
+    // Initialize controllers
     employeeNameController = TextEditingController();
     mobileNumberController = TextEditingController();
     employeeRoleController = TextEditingController();
@@ -47,35 +51,36 @@ class EmployeeController extends GetxController {
     emailAddressController = TextEditingController();
     educationController = TextEditingController();
     homeAddressController = TextEditingController();
-    choosePictireController = TextEditingController();
+    choosePictureController = TextEditingController();
 
-    _setupListners();
-
-//TODO : Will do it later
-    //loadEmployeedata();
+    // Set up listeners for text controllers
+    _setupListeners();
   }
 
   @override
   void onClose() {
-    super.onClose();
-    homeAddressController.dispose();
-    educationController.dispose();
-    emailAddressController.dispose();
-    nationalIdController.dispose();
-    genderController.dispose();
-    fatherHusbandNameController.dispose();
-    monthlySalaryController.dispose();
-    dateOfJoiningController.dispose();
+    // Dispose controllers
     employeeNameController.dispose();
-    employeeRoleController.dispose();
     mobileNumberController.dispose();
-    choosePictireController.dispose();
+    employeeRoleController.dispose();
+    dateOfJoiningController.dispose();
+    monthlySalaryController.dispose();
+    fatherHusbandNameController.dispose();
+    genderController.dispose();
+    nationalIdController.dispose();
+    emailAddressController.dispose();
+    educationController.dispose();
+    homeAddressController.dispose();
+    choosePictureController.dispose();
+
+    super.onClose();
   }
+
   void clearAllFields() {
+    // Clear text controllers
     employeeNameController.clear();
     mobileNumberController.clear();
     employeeRoleController.clear();
-    choosePictireController.clear();
     dateOfJoiningController.clear();
     monthlySalaryController.clear();
     fatherHusbandNameController.clear();
@@ -84,9 +89,11 @@ class EmployeeController extends GetxController {
     emailAddressController.clear();
     educationController.clear();
     homeAddressController.clear();
+    choosePictureController.clear();
   }
 
-  void _setupListners() {
+  void _setupListeners() {
+    // Attach listeners to update observable variables
     employeeNameController
         .addListener(() => employeeName.value = employeeNameController.text);
     mobileNumberController
@@ -108,18 +115,20 @@ class EmployeeController extends GetxController {
         .addListener(() => education.value = educationController.text);
     homeAddressController
         .addListener(() => homeAddress.value = homeAddressController.text);
-        choosePictireController
-         .addListener(() => choosePicture.value = choosePictireController.text);
+    choosePictureController
+        .addListener(() => choosePicture.value = choosePictureController.text);
   }
 
   Future<void> saveEmployeeData() async {
     try {
       isLoading.value = true;
 
+      // Reference Firestore collection
       final CollectionReference employeesCollection =
           FirebaseFirestore.instance.collection('employees');
 
-      await employeesCollection.doc().set({
+      // Add document to Firestore
+      await employeesCollection.add({
         'employeeName': employeeName.value,
         'mobileNumber': mobileNumber.value,
         'employeeRole': employeeRole.value,
@@ -131,16 +140,32 @@ class EmployeeController extends GetxController {
         'emailAddress': emailAddress.value,
         'education': education.value,
         'homeAddress': homeAddress.value,
+        'choosePicture': choosePicture.value,
+        'createdAt': FieldValue.serverTimestamp(),
         'updatedAt': FieldValue.serverTimestamp(),
       });
 
       Get.snackbar('Success', 'Employee profile saved successfully!',
           backgroundColor: Colors.green, colorText: Colors.white);
     } catch (e) {
+      // Show error message
       Get.snackbar('Error', 'Failed to save profile: $e',
           backgroundColor: Colors.red, colorText: Colors.white);
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  Future<void> getAllEmployees() async {
+    try {
+      CollectionReference employeeCollection =
+          FirebaseFirestore.instance.collection('employees');
+      QuerySnapshot querySnapshot = await employeeCollection.get();
+      employees.value = querySnapshot.docs
+          .map((doc) => doc.data() as Map<String, dynamic>)
+          .toList();
+    } catch (e) {
+      Get.snackbar("Error", "Failed to fetch employees: $e");
     }
   }
 }

@@ -5,7 +5,5 @@ class EmployeeBinding implements Bindings {
   @override
   void dependencies() {
     Get.put(EmployeeController());
-
-  
   }
 }

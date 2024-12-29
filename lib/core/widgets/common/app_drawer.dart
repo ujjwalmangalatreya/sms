@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmgmt/core/services/auth_services.dart';
+import 'package:schoolmgmt/features/employee/controllers/employee_controller.dart';
 
 import '../../controller/navigation_controller.dart';
 
@@ -52,6 +53,7 @@ class SharedDrawer extends StatelessWidget {
 class DrawerItem extends StatelessWidget {
   final NavigationController controller = Get.find<NavigationController>();
   final AuthServices authServices = Get.find<AuthServices>();
+  final EmployeeController employeeController = Get.find<EmployeeController>();
   final String title;
   final int index;
   final Icon icon;
@@ -79,6 +81,9 @@ class DrawerItem extends StatelessWidget {
         selected: isSelected,
         selectedTileColor: Colors.blue[100], // Highlight selected tile
         onTap: () async {
+          if (index == 3) {
+            employeeController.getAllEmployees();
+          }
           if (index == 4) {
             try {
               await authServices.logOutUser(); // Call the logout method
