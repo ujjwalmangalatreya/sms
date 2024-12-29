@@ -207,14 +207,14 @@ Widget employeeCard(List<Map<String, dynamic>> employees) {
                 Flexible(
                   flex: 3,
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(employee["photoUrl"]),
+                    backgroundImage: NetworkImage(employee["choosePicture"]),
                     radius: 50.0,
                   ),
                 ),
                 Flexible(
                   flex: 1,
                   child: Text(
-                    employee["name"],
+                    employee["employeeName"],
                     style: const TextStyle(
                       fontSize: 15.0,
                       fontWeight: FontWeight.bold,

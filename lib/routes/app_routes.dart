@@ -39,7 +39,7 @@ class TAppRoutes {
     GetPage(
       name: TRoutes.dashboard,
       page: () => AppLayout(),
-      binding: AuthBinding(),
+      bindings: [AuthBinding(), EmployeeBinding()],
       middlewares: [AuthMiddleware()],
     ),
     GetPage(
