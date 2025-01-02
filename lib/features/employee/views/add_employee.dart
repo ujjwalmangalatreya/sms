@@ -1,10 +1,9 @@
-import 'dart:typed_data';
-
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmgmt/features/employee/controllers/employee_controller.dart';
-import 'package:flutter/foundation.dart';
+
 import '../../../core/constants/app_fonts.dart';
 
 class AddEmployee extends StatelessWidget {
@@ -218,7 +217,8 @@ class AddEmployee extends StatelessWidget {
                                 child: profileTextField(
                                     controller: employeeController
                                         .dateOfJoiningController,
-                                        chooseDateController: employeeController.dateOfJoiningController),
+                                    chooseDateController: employeeController
+                                        .dateOfJoiningController),
                               ),
                               positionedText("Date of Joining *"),
                             ],
@@ -417,7 +417,6 @@ class AddEmployee extends StatelessWidget {
           child: ElevatedButton(
               onPressed: () {
                 employeeController.saveEmployeeData();
-                employeeController.clearAllFields();
               },
               child: Text("Create")),
         ),
@@ -534,5 +533,3 @@ Widget profileTextField({
     ),
   );
 }
-
-
